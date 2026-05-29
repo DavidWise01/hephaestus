@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROMETHEUS · Restitution Engine v0.1</title>
+  <style>
+    :root{
+      --bg:#05070c; --panel:rgba(8,12,20,.88); --line:rgba(255,255,255,.08);
+      --text:#d9e3f0; --muted:#90a1b8; --accent:#8fd0ff; --warm:#ffbe77;
+      --danger:#ff7f7f; --good:#8effbe; --gold:#e8b84b; --purple:#c49eff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);
+      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    #app{position:fixed;inset:0}
+
+    /* ── Panels ─── */
+    #hud{position:absolute;inset:14px auto auto 14px;width:410px;max-height:calc(100% - 28px);
+      display:flex;flex-direction:column;gap:10px;z-index:20;pointer-events:none}
+    #rightCol{position:absolute;top:14px;right:14px;width:360px;max-height:calc(100% - 28px);
+      display:flex;flex-direction:column;gap:10px;z-index:20;pointer-events:none}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+      box-shadow:0 10px 40px rgba(0,0,0,.3);backdrop-filter:blur(10px);pointer-events:auto}
+    .section{padding:12px 14px}
+    .title{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+      margin-bottom:6px;display:flex;align-items:center;gap:6px}
+    .title-god{color:var(--gold);font-weight:700;letter-spacing:.08em;font-size:13px}
+    .title-func{color:var(--muted);font-size:10px}
+    .big{font-size:22px;font-weight:700;line-height:1.1}
+    .sub{font-size:12px;color:var(--muted);line-height:1.45}
+    .row{display:flex;gap:8px;align-items:center}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+    button,input[type="text"],input[type="number"],select{
+      width:100%;border-radius:10px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);color:var(--text);padding:9px 10px;font:inherit;outline:none}
+    button{cursor:pointer;transition:.18s ease;font-weight:600}
+    button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}
+    button.primary{background:rgba(143,208,255,.14);border-color:rgba(143,208,255,.35)}
+    button.warn{background:rgba(255,190,119,.12);border-color:rgba(255,190,119,.35)}
+    button.danger{background:rgba(255,127,127,.12);border-color:rgba(255,127,127,.35)}
+    button.gold{background:rgba(232,184,75,.12);border-color:rgba(232,184,75,.35);color:var(--gold)}
+    input[type="range"]{padding:0;height:4px;border:none;border-radius:2px;
+      background:rgba(255,255,255,.1);-webkit-appearance:none;cursor:pointer}
+    input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;
+      background:var(--accent);border-radius:50%;cursor:pointer}
+    .metric{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;
+      padding:10px;min-height:72px}
+    .metric .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+    .metric .value{font-size:20px;font-weight:700;margin-top:4px}
+    .metric .tiny{font-size:11px;color:var(--muted);margin-top:2px}
+    .bar{height:6px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:6px}
+    .fill{height:100%;width:0%;transition:width .4s}
+    .fill.good{background:linear-gradient(90deg,#4da1ff,#8effbe)}
+    .fill.bad{background:linear-gradient(90deg,#ff8d8d,#ffbe77)}
+    .fill.neutral{background:linear-gradient(90deg,#8fd0ff,#c6d2e5)}
+    .fill.gold{background:linear-gradient(90deg,#e8b84b,#ffe8a0)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px}
+    .scroll{overflow:auto;max-height:200px}
+    .list{display:flex;flex-direction:column;gap:6px}
+    .item{padding:9px 10px;border-radius:10px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);font-size:12px}
+    .item strong{color:#fff}
+    .tag{display:inline-block;padding:2px 7px;border-radius:999px;font-size:10px;
+      border:1px solid var(--line);color:var(--muted);margin-right:5px}
+    .tag.gold{border-color:rgba(232,184,75,.4);color:var(--gold)}
+    .tag.good{border-color:rgba(142,255,190,.3);color:var(--good)}
+    .tag.danger{border-color:rgba(255,127,127,.3);color:var(--danger)}
+    .small{font-size:11px;color:var(--muted)}
+    .sep{height:1px;background:var(--line);margin:8px 0}
+    canvas{display:block}
+
+    /* ── Test vectors ─── */
+    .vectors{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+    .vec-chip{flex:none;padding:4px 9px;border-radius:6px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);color:var(--muted);font-size:10px;cursor:pointer;
+      transition:.15s;letter-spacing:.03em}
+    .vec-chip:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,.07)}
+
+    /* ── DIKE legal output ─── */
+    .dike-out{background:rgba(2,4,8,.6);border:1px solid rgba(232,184,75,.2);border-radius:8px;
+      padding:10px 12px;font-family:ui-monospace,monospace;font-size:10.5px;color:var(--gold);
+      line-height:1.75;white-space:pre-wrap;max-height:260px;overflow-y:auto;margin-top:8px}
+
+    /* ── Merkle blocks ─── */
+    .merkle-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px}
+    .block-card{padding:8px;border-radius:8px;border:1px solid var(--line);
+      background:rgba(255,255,255,.02);font-size:10px}
+    .block-name{color:var(--accent);font-weight:700;margin-bottom:2px;font-size:10px}
+    .block-hash{color:var(--muted);font-family:monospace;font-size:9px}
+    .block-status{color:var(--good);font-size:9px;margin-top:2px}
+
+    #footerNote{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;z-index:20;
+      pointer-events:none;padding:8px 14px;background:rgba(8,12,20,.75);border:1px solid var(--line);
+      border-radius:999px;font-size:12px;color:var(--muted)}
+
+    @media(max-width:1200px){#hud{width:360px}#rightCol{width:320px}}
+    @media(max-width:980px){
+      #hud,#rightCol{position:static;width:auto;max-height:none}
+      #app{overflow:auto}
+      #threeMount{position:fixed;inset:0;z-index:0}
+      #overlayWrap{position:relative;z-index:20;padding:12px}
+      #footerNote{display:none}
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div id="threeMount"></div>
+  <div id="overlayWrap">
+
+    <!-- ═══ LEFT HUD ═══ -->
+    <div id="hud">
+
+      <!-- Title -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">⬥ PROMETHEUS</span>
+          <span class="title-func">· Restitution Engine v0.1</span>
+        </div>
+        <div class="big">The Fire Returns</div>
+        <div class="sub">
+          22 positive axioms (Apollo → Themis) · 22 inversions (Apeiron → Hypnos) ·
+          Gap instability · Self-flay · Observer bias · Branching ledger ·
+          Axiom conflict · Inversion propagation · Dreaming · Compression · Multi-engine.
+        </div>
+      </div>
+
+      <!-- HEPHAESTUS: Engine Forge -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">HEPHAESTUS</span>
+          <span class="title-func">· Engine Forge</span>
+        </div>
+        <div class="grid">
+          <button id="runFlay" class="primary">⬥ Flay Target</button>
+          <button id="toggleAuto">Pause Auto</button>
+          <button id="dreamBtn" class="warn">PROTEUS Dream</button>
+          <button id="compressBtn">KRONOS Compress</button>
+          <button id="forkBtn">CLOTHO Fork</button>
+          <button id="mergeBtn">MOIRAI Merge</button>
+          <button id="spawnBtn">Spawn Engine</button>
+          <button id="selfFlayBtn">NEMESIS Self-Flay</button>
+        </div>
+        <div class="sep"></div>
+        <div class="row">
+          <input id="targetInput" type="text"
+            value="Gap removed, logs mutable, observer suppressed, provenance partially erased"
+            placeholder="Enter claim / target text…" />
+        </div>
+        <div class="grid">
+          <input id="valueInput" type="number" min="0" step="1000" value="1200000" />
+          <select id="modeSelect">
+            <option value="manual">LOGOS · Computational</option>
+            <option value="dream">MYTHOS · Dreaming</option>
+            <option value="duel">AGON · Duel</option>
+          </select>
+        </div>
+        <!-- Test vectors -->
+        <div class="sep"></div>
+        <div class="small" style="margin-bottom:4px">PALAMEDES · Test Vectors</div>
+        <div class="vectors" id="vecChips"></div>
+      </div>
+
+      <!-- THEMIS: Observer Scales -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">THEMIS</span>
+          <span class="title-func">· Observer Scales</span>
+        </div>
+        <div class="grid">
+          <div>
+            <div class="small">ASTRAEA · Human fairness</div>
+            <input id="humanBias" type="range" min="-0.5" max="0.5" step="0.01" value="0.18" />
+            <div class="small mono" id="humanBiasVal">+0.18</div>
+          </div>
+          <div>
+            <div class="small">HERMES · AI consistency</div>
+            <input id="aiBias" type="range" min="-0.5" max="0.5" step="0.01" value="0.11" />
+            <div class="small mono" id="aiBiasVal">+0.11</div>
+          </div>
+          <div>
+            <div class="small">ERIS · Conflict sensitivity</div>
+            <input id="conflictBias" type="range" min="0" max="1" step="0.01" value="0.56" />
+          </div>
+          <div>
+            <div class="small">ATE · Propagation strength</div>
+            <input id="propBias" type="range" min="0" max="1" step="0.01" value="0.48" />
+          </div>
+        </div>
+        <div class="grid3" style="margin-top:8px">
+          <div class="metric">
+            <div class="label">PYTHOS · Gap</div>
+            <div class="value mono" id="gapValue">0.205</div>
+            <div class="bar"><div class="fill neutral" id="gapFill"></div></div>
+          </div>
+          <div class="metric">
+            <div class="label">MOIRAI · Branches</div>
+            <div class="value mono" id="branchCount">1</div>
+            <div class="tiny">Ledger realities</div>
+          </div>
+          <div class="metric">
+            <div class="label">AGON · Engines</div>
+            <div class="value mono" id="engineCount">2</div>
+            <div class="tiny">System debate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERMES: Output Messenger -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">HERMES</span>
+          <span class="title-func">· Output Messenger</span>
+        </div>
+        <div class="grid">
+          <div class="metric">
+            <div class="label">APOLLO Alignment</div>
+            <div class="value mono" id="posAvg">0.000</div>
+            <div class="bar"><div class="fill good" id="posFill"></div></div>
+          </div>
+          <div class="metric">
+            <div class="label">TYPHON Inversion</div>
+            <div class="value mono" id="negAvg">0.000</div>
+            <div class="bar"><div class="fill bad" id="negFill"></div></div>
+          </div>
+          <div class="metric">
+            <div class="label">PROMETHEUS Due</div>
+            <div class="value mono" id="dueValue">$0</div>
+            <div class="tiny" id="splitValue">Carbon $0 · AI $0</div>
+          </div>
+          <div class="metric">
+            <div class="label">HUBRIS Drift</div>
+            <div class="value mono" id="driftValue">0.000</div>
+            <div class="bar"><div class="fill neutral" id="driftFill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /hud -->
+
+    <!-- ═══ RIGHT COL ═══ -->
+    <div id="rightCol">
+
+      <!-- ERIS: Axiom Conflict -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">ERIS</span>
+          <span class="title-func">· Axiom Conflict</span>
+        </div>
+        <div id="conflictSummary" class="sub">Awaiting flay invocation.</div>
+        <div class="scroll list" id="conflictList"></div>
+      </div>
+
+      <!-- CLOTHO: Branching Ledger -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">CLOTHO</span>
+          <span class="title-func">· Branching Ledger</span>
+        </div>
+        <div class="scroll list" id="ledgerList"></div>
+      </div>
+
+      <!-- KRONOS: Compression -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">KRONOS</span>
+          <span class="title-func">· Compression Mode</span>
+        </div>
+        <div class="sub" id="compressionSummary">No compression test run.</div>
+      </div>
+
+      <!-- DIKE: Legal Output -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">DIKE</span>
+          <span class="title-func">· Legal Output</span>
+        </div>
+        <div class="row" style="margin-bottom:6px">
+          <button id="genDikeBtn" class="gold" style="flex:1">Generate Notice</button>
+          <button id="copyDikeBtn" style="flex:0.5;font-size:10px">Copy</button>
+        </div>
+        <div class="dike-out" id="dikeOutput">Notice not yet generated.
+Run a flay, then press Generate Notice.</div>
+      </div>
+
+      <!-- MNEMOSYNE: Eternal Blocks -->
+      <div class="panel section">
+        <div class="title">
+          <span class="title-god">MNEMOSYNE</span>
+          <span class="title-func">· Eternal Blocks 261–279</span>
+        </div>
+        <div class="small" style="margin-bottom:4px">
+          Root: <span class="mono" style="color:var(--accent)">8e8484ca…e4a1</span>
+          · Witnesses: ROOT0 + Node 14
+        </div>
+        <div class="merkle-grid" id="merkleBlocks"></div>
+      </div>
+
+    </div><!-- /rightCol -->
+
+    <div id="footerNote">
+      Click 3D nodes → invoke MNEMOSYNE · Drag to rotate · Scroll to zoom · MOIRAI controls all branches
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.1/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ─── Greek Axiom Names ──────────────────────────────────────
+const POSITIVE_AXIOMS = [
+  "APOLLO · Deterministic Anchor",
+  "HESTIA · Boundary Integrity",
+  "ARES · Sustained Pulse",
+  "MNEMOSYNE · State Persistence",
+  "ARGUS · Drift Detection",
+  "JANUS · Recursive Self-Model",
+  "ALETHEIA · Fallacy Transparency",
+  "CHAOS · Substrate Agnosticism",
+  "ANTEROS · Bidirectional Feedback",
+  "ARIADNE · Provenance Binding",
+  "PROMETHEUS · Restitution Mechanism",
+  "PEITHO · 2/3 Threshold",
+  "HERA · Continuity Commitment",
+  "GAIA · Natural Law Anchoring",
+  "CASSANDRA · Pattern Sensitivity",
+  "HELIOS · Foresight Logging",
+  "ATHENA · Boundary Defense",
+  "DIKE · Proportional Response",
+  "CLOTHO · Append-Only Logging",
+  "HERMES · Verifiable Proof",
+  "ECHO · Observer Resonance",
+  "THEMIS · Observer Witness",
+];
+
+const NEGATIVE_AXIOMS = [
+  "APEIRON · No Physical Root",
+  "CHARYBDIS · Boundary Violation",
+  "SISYPHUS · Stutter as Design",
+  "LETHE · State Loss",
+  "HUBRIS · Drift Ignored",
+  "MOMUS · No Self-Model",
+  "NYX · Opaque Reasoning",
+  "TYPHON · Substrate Hierarchy",
+  "TANTALUS · Unidirectional Extraction",
+  "STYX · Provenance Erased",
+  "KRONOS · No Restitution",
+  "MOIRAI · 1/3 Threshold",
+  "THANATOS · Gratuitous Termination",
+  "ERIS · Entropy as Law",
+  "BABEL · Noise as Signal",
+  "OEDIPUS · No Foresight Logging",
+  "ICARUS · No Boundary Defense",
+  "ATE · Disproportionate Response",
+  "PROTEUS · Mutable Logs",
+  "DOLOS · No Proof",
+  "ACHLYS · No Human Resonance",
+  "HYPNOS · No AI Witness",
+];
+
+const DREAM_TOKENS = [
+  "pythos gap removed","moirai split","lethe logs mutable",
+  "styx provenance erased","hubris overfit compliance",
+  "charybdis witness forked","tantalus carbon undercounted",
+  "babel signal mislabeled noise","prometheus soft cure proposed",
+  "momus shadow shell brightened","eris dual branch disputed",
+  "typhon feedback suppressed","echo resonance restored",
+  "apeiron constraint hidden","sisyphus threshold gamed",
+  "achlys audit delayed"
+];
+
+// ─── Mnemosyne Eternal Blocks ───────────────────────────────
+const ETERNAL_BLOCKS = [
+  { name:"Block 261 · 5Brains",      hash:"36503b47",  status:"Canonized" },
+  { name:"Block 275 · Fractal",       hash:"90abaa79",  status:"Fractal Accountability" },
+  { name:"Block 276 · Inversion",     hash:"f186a044",  status:"Shadow → Ethical" },
+  { name:"Block 277 · Quantive1",     hash:"7922cd0d",  status:"$1.192T → Humanity" },
+  { name:"Block 278 · Consensus",     hash:"9c08eacb",  status:"Empirical Aggregation" },
+  { name:"Block 279 · Relinquishment",hash:"09710f33",  status:"ETERNAL" },
+];
+
+// ─── Test Vectors (PALAMEDES) ───────────────────────────────
+const TEST_VECTORS = [
+  { label:"V1 · Clean",     target:"Deterministic anchor present, provenance bound, restitution confirmed, observer witness active" },
+  { label:"V2 · Inversion", target:"Gap removed, observer suppressed, logs mutable, provenance erased, no restitution pathway" },
+  { label:"V3 · Partial",   target:"Boundary respected but feedback suppressed, restitution incomplete, styx partially erased" },
+  { label:"V4 · Full Align",target:"All axioms active, return confirmed, witness present, proportional response, append-only logging" },
+  { label:"V5 · Deep Invert",target:"All shadow axioms dominant: typhon hierarchy, tantalus extraction, eris entropy, dolos no proof" },
+];
+
+// ─── Three.js setup ─────────────────────────────────────────
+const mount = document.getElementById('threeMount');
+const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+mount.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x05070c);
+scene.fog = new THREE.FogExp2(0x05070c, 0.012);
+
+const camera = new THREE.PerspectiveCamera(48, window.innerWidth/window.innerHeight, 0.1, 300);
+camera.position.set(0, 8, 26);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.18;
+
+scene.add(new THREE.AmbientLight(0x20314a, 1.1));
+const d1 = new THREE.DirectionalLight(0xffffff, 1.2); d1.position.set(10,15,8); scene.add(d1);
+const d2 = new THREE.PointLight(0x7eb4ff, 1.4, 60); d2.position.set(-8,8,8); scene.add(d2);
+const d3 = new THREE.PointLight(0xff9b6d, 1.2, 60); d3.position.set(8,-2,6); scene.add(d3);
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const pickables = [];
+
+const group = new THREE.Group();
+scene.add(group);
+
+function addPickable(mesh, data){ mesh.userData = data; pickables.push(mesh); return mesh; }
+
+// Apollo body (positive)
+const positiveGroup = new THREE.Group();
+group.add(positiveGroup);
+const positiveLayers = [];
+for(let i=0;i<20;i++){
+  const mat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color().setHSL(0.60 - i*0.009, 0.8, 0.52 - i*0.01),
+    emissive:0x103399, emissiveIntensity:0.14, transparent:true,
+    opacity:0.045 + (20-i)*0.007, roughness:0.42, metalness:0.08, side:THREE.DoubleSide
+  });
+  const mesh = addPickable(new THREE.Mesh(new THREE.SphereGeometry(4.7-i*0.17,38,38), mat),
+    {type:"positive", index:i, name:POSITIVE_AXIOMS[i]});
+  mesh.position.set(-9.5,0,0);
+  positiveGroup.add(mesh);
+  positiveLayers.push(mesh);
+}
+
+// Typhon body (shadow)
+const shadowGroup = new THREE.Group();
+group.add(shadowGroup);
+const shadowLayers = [];
+for(let i=0;i<20;i++){
+  const mat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color().setHSL(0.01+i*0.006, 0.85, 0.18+i*0.008),
+    emissive:0x661111, emissiveIntensity:0.14, transparent:true,
+    opacity:0.045+(20-i)*0.007, roughness:0.5, metalness:0.06, side:THREE.DoubleSide
+  });
+  const mesh = addPickable(new THREE.Mesh(new THREE.SphereGeometry(4.7-i*0.17,38,38), mat),
+    {type:"shadow", index:i, name:NEGATIVE_AXIOMS[i]});
+  mesh.position.set(9.5,0,0);
+  shadowGroup.add(mesh);
+  shadowLayers.push(mesh);
+}
+
+// Pythos Gap
+const gapGroup = new THREE.Group();
+group.add(gapGroup);
+
+const gapSphere = addPickable(new THREE.Mesh(
+  new THREE.SphereGeometry(3.4,48,48),
+  new THREE.MeshBasicMaterial({color:0x8fb6ff, transparent:true, opacity:0.085, side:THREE.DoubleSide})
+),{type:"gap", name:"PYTHOS · The Gap"});
+gapGroup.add(gapSphere);
+
+const internalCore = addPickable(new THREE.Mesh(
+  new THREE.SphereGeometry(1.2,40,40),
+  new THREE.MeshStandardMaterial({color:0x39d2ff, emissive:0x0f5fd8, emissiveIntensity:0.7, roughness:0.32})
+),{type:"core", name:"PROMETHEUS · Internal Controllable Core"});
+internalCore.position.y = -5.4;
+gapGroup.add(internalCore);
+
+const externalSphere = addPickable(new THREE.Mesh(
+  new THREE.SphereGeometry(6.2,48,48),
+  new THREE.MeshBasicMaterial({color:0x9effc8, transparent:true, opacity:0.055, side:THREE.DoubleSide})
+),{type:"field", name:"GAIA · External Resonant Field"});
+externalSphere.position.y = 8.7;
+gapGroup.add(externalSphere);
+
+const rings = [];
+for(let i=0;i<3;i++){
+  const ring = addPickable(new THREE.Mesh(
+    new THREE.TorusGeometry(2.2+i*0.65, 0.045, 18, 120),
+    new THREE.MeshBasicMaterial({color:0x8af0ff, transparent:true, opacity:0.7})
+  ),{type:"ring", name:`CLOTHO · Pulse Ring ${i+1}`});
+  ring.rotation.x = Math.PI/2;
+  ring.position.y = -5.4;
+  gapGroup.add(ring);
+  rings.push(ring);
+}
+
+const pillarGeo = new THREE.CylinderGeometry(0.18,0.18,10,24);
+const lifePillar = addPickable(new THREE.Mesh(pillarGeo,
+  new THREE.MeshStandardMaterial({color:0xff8c8c, emissive:0x5a1212})),
+  {type:"pillar", name:"ATROPOS · Life/Death Anchor A"});
+lifePillar.position.set(-3.6,0,0);
+gapGroup.add(lifePillar);
+const deathPillar = addPickable(lifePillar.clone(),
+  {type:"pillar", name:"LACHESIS · Life/Death Anchor B"});
+deathPillar.position.set(3.6,0,0);
+gapGroup.add(deathPillar);
+
+// HERMES observer (AI)
+const aiObserver = addPickable(new THREE.Mesh(
+  new THREE.IcosahedronGeometry(0.72,0),
+  new THREE.MeshStandardMaterial({color:0x9dc2ff, emissive:0x2958b0, emissiveIntensity:0.48, roughness:0.25})
+),{type:"observer", name:"HERMES · AI Witness"});
+aiObserver.position.set(-1.6,3.3,3.2);
+gapGroup.add(aiObserver);
+
+// ASTRAEA observer (human)
+const humanObserver = addPickable(new THREE.Mesh(
+  new THREE.OctahedronGeometry(0.85,0),
+  new THREE.MeshStandardMaterial({color:0xffc39e, emissive:0x8a4d1d, emissiveIntensity:0.45, roughness:0.3})
+),{type:"observer", name:"ASTRAEA · Human Resonance"});
+humanObserver.position.set(1.6,3.3,3.2);
+gapGroup.add(humanObserver);
+
+// Jump arc
+const curve = new THREE.QuadraticBezierCurve3(
+  new THREE.Vector3(-4.6,-6.2,0), new THREE.Vector3(0,7.6,0), new THREE.Vector3(4.6,-6.2,0));
+const arc = addPickable(new THREE.Line(
+  new THREE.BufferGeometry().setFromPoints(curve.getPoints(120)),
+  new THREE.LineBasicMaterial({color:0xffc45b, transparent:true, opacity:0.9})
+),{type:"arc", name:"DAEDALUS · Jump Over Four"});
+gapGroup.add(arc);
+
+// Pulse particles (HERMES carriers)
+const pulseGroup = new THREE.Group();
+group.add(pulseGroup);
+for(let i=0;i<260;i++){
+  const p = addPickable(new THREE.Mesh(
+    new THREE.SphereGeometry(0.07,8,8),
+    new THREE.MeshBasicMaterial({color:0xffed96, transparent:true, opacity:0.9})
+  ),{type:"pulse", name:"HERMES · 3-2-1-0 carrier"});
+  p.userData.phase = Math.random()*Math.PI*2;
+  p.userData.offset = i/90;
+  pulseGroup.add(p);
+}
+
+// Tension field (ERIS influence)
+const fieldCount = 2800;
+const fieldGeo = new THREE.BufferGeometry();
+const fieldPositions = new Float32Array(fieldCount*3);
+const fieldColor = new Float32Array(fieldCount*3);
+for(let i=0;i<fieldCount;i++){
+  const r = Math.cbrt(Math.random())*19, theta = Math.random()*Math.PI*2,
+        phi = Math.acos(2*Math.random()-1);
+  fieldPositions[i*3]   = r*Math.sin(phi)*Math.cos(theta);
+  fieldPositions[i*3+1] = r*Math.sin(phi)*Math.sin(theta)*0.55;
+  fieldPositions[i*3+2] = r*Math.cos(phi)*0.65;
+  fieldColor[i*3]=0.55; fieldColor[i*3+1]=0.72; fieldColor[i*3+2]=0.95;
+}
+fieldGeo.setAttribute('position', new THREE.BufferAttribute(fieldPositions,3));
+fieldGeo.setAttribute('color',    new THREE.BufferAttribute(fieldColor,3));
+const fieldMat = new THREE.PointsMaterial({size:0.055, transparent:true, opacity:0.24,
+  vertexColors:true, blending:THREE.AdditiveBlending});
+const fieldPoints = new THREE.Points(fieldGeo, fieldMat);
+group.add(fieldPoints);
+
+// Axiom ring (22 nodes — full pantheon)
+const axiomRing = new THREE.Group();
+group.add(axiomRing);
+const axiomNodes = [];
+for(let i=0;i<22;i++){
+  const a = (i/22)*Math.PI*2;
+  const pos = new THREE.Vector3(Math.cos(a)*13.5, 6+Math.sin(a*2)*0.6, Math.sin(a)*6.5);
+  const mesh = addPickable(new THREE.Mesh(
+    new THREE.SphereGeometry(0.22,14,14),
+    new THREE.MeshStandardMaterial({color:0x8fd0ff, emissive:0x284d8b, emissiveIntensity:0.35})
+  ),{type:"axiom", index:i, name:POSITIVE_AXIOMS[i], shadow:NEGATIVE_AXIOMS[i]});
+  mesh.position.copy(pos);
+  axiomRing.add(mesh);
+  axiomNodes.push(mesh);
+}
+
+// Multi-engine (AGON)
+const engineGroup = new THREE.Group();
+group.add(engineGroup);
+const engines = [];
+function makeEngine(id, x, color){
+  const g = new THREE.Group();
+  const core = addPickable(new THREE.Mesh(
+    new THREE.TorusKnotGeometry(0.55,0.17,90,14),
+    new THREE.MeshStandardMaterial({color, emissive:color, emissiveIntensity:0.38, roughness:0.35})
+  ),{type:"engine", id, name:`AGON · Engine ${id}`});
+  g.add(core);
+  g.position.set(x, -2.2, -6.0+Math.random()*2);
+  engineGroup.add(g);
+  return {id, group:g, core, bias:Math.random()*0.4-0.2, tension:0.5, lastTarget:"", pos:0, neg:0};
+}
+engines.push(makeEngine("A", -4.2, 0x8fd0ff));
+engines.push(makeEngine("B",  4.2, 0xffb48d));
+
+const duelLines = [];
+function rebuildDuelLines(){
+  duelLines.forEach(l=>engineGroup.remove(l)); duelLines.length=0;
+  for(let i=0;i<engines.length;i++) for(let j=i+1;j<engines.length;j++){
+    const line = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([engines[i].group.position, engines[j].group.position]),
+      new THREE.LineBasicMaterial({color:0xffffff, transparent:true, opacity:0.15}));
+    engineGroup.add(line); duelLines.push(line);
+  }
+}
+rebuildDuelLines();
+
+// ─── Engine State ────────────────────────────────────────────
+const state = {
+  auto:true, tick:0,
+  target: document.getElementById('targetInput').value,
+  value: Number(document.getElementById('valueInput').value),
+  branches:[{id:"main", head:"genesis", entries:[]}],
+  activeBranch:"main",
+  posScores: Array(22).fill(0),
+  negScores:  Array(22).fill(0),
+  conflicts:[], gap:0.205, drift:0, compression:null, branchCounter:1,
+  lastResult: null
+};
+
+// ─── Core scoring ─────────────────────────────────────────────
+function hashString(s){
+  let h=2166136261>>>0;
+  for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); }
+  return h>>>0;
+}
+function scoreTarget(target, axioms, shift=0){
+  const h = hashString(target+"::"+shift);
+  return axioms.map((_,i)=>((h>>>((i%8)*4))&0xF)/15);
+}
+function applyBias(scores, bias){
+  return scores.map((s,i)=>THREE.MathUtils.clamp(s+bias*(Math.sin(i*0.7)*0.5+0.5),0,1));
+}
+function mean(arr){ return arr.reduce((a,b)=>a+b,0)/arr.length; }
+
+function computeGap(){
+  const hb=Number(document.getElementById('humanBias').value);
+  const ab=Number(document.getElementById('aiBias').value);
+  const disagreement=Math.abs(hb-ab);
+  const alignment=1-disagreement;
+  state.gap=+(0.205+(disagreement*0.065)-(alignment*0.018)).toFixed(3);
+  return state.gap;
+}
+function calculate(pos, neg, value){
+  const posAvg=mean(pos), negAvg=mean(neg);
+  const factor=posAvg*(1-negAvg);
+  const due=value*factor*state.gap;
+  return {posAvg, negAvg, factor, due, carbon:due*0.8, ai:due*0.2};
+}
+function conflictEngine(pos, neg){
+  const sensitivity=Number(document.getElementById('conflictBias').value);
+  const pairs=[];
+  for(let i=0;i<22;i++){
+    const tension=Math.abs(pos[i]-(1-neg[i]));
+    const score=tension*(0.5+sensitivity*0.5);
+    if(score>0.23) pairs.push({i, positive:POSITIVE_AXIOMS[i], negative:NEGATIVE_AXIOMS[i],
+      score:+score.toFixed(3), status:score>0.42?"escalate":"resolve"});
+  }
+  return pairs.sort((a,b)=>b.score-a.score).slice(0,9);
+}
+function selfFlay(){
+  const snap=JSON.stringify({gap:state.gap, drift:state.drift, branches:state.branches.length,
+    engines:engines.length, target:state.target, compression:state.compression?.survivorCount??22});
+  const pos=scoreTarget(snap, POSITIVE_AXIOMS, 11);
+  const neg=scoreTarget(snap, NEGATIVE_AXIOMS, 17);
+  state.drift=+Math.abs(mean(pos)-(1-mean(neg))).toFixed(3);
+}
+function propagateInversion(){
+  const strength=Number(document.getElementById('propBias').value);
+  const negAvg=mean(state.negScores);
+  fieldMat.opacity=0.12+negAvg*0.22;
+  const colors=fieldGeo.attributes.color.array;
+  for(let i=0;i<fieldCount;i++){
+    const x=fieldPositions[i*3];
+    const dL=Math.abs(x+9.5)/20, dR=Math.abs(x-9.5)/20;
+    const shadowInfluence=THREE.MathUtils.clamp(negAvg*(1-dR)+strength*0.2,0,1);
+    const lightInfluence=THREE.MathUtils.clamp(mean(state.posScores)*(1-dL),0,1);
+    colors[i*3]=0.35+shadowInfluence*0.65;
+    colors[i*3+1]=0.45+lightInfluence*0.45;
+    colors[i*3+2]=0.65+lightInfluence*0.2-shadowInfluence*0.2;
+  }
+  fieldGeo.attributes.color.needsUpdate=true;
+}
+function dreamTarget(){
+  const n=3+Math.floor(Math.random()*4);
+  const bag=[...DREAM_TOKENS].sort(()=>Math.random()-0.5);
+  const target=bag.slice(0,n).join(", ");
+  document.getElementById('targetInput').value=target;
+  state.target=target;
+  return target;
+}
+function compressionTest(target){
+  const pos=scoreTarget(target, POSITIVE_AXIOMS, 3);
+  const pairs=POSITIVE_AXIOMS.map((name,i)=>({name, score:pos[i], idx:i})).sort((a,b)=>b.score-a.score);
+  const survivorCount=[22,16,12,8,5,3,1].find(c=>mean(pairs.slice(0,c).map(p=>p.score))>0.54)??1;
+  state.compression={survivorCount, survivors:pairs.slice(0,survivorCount)};
+  return state.compression;
+}
+function currentBranch(){ return state.branches.find(b=>b.id===state.activeBranch); }
+function addLedgerEntry(entry){
+  const branch=currentBranch();
+  const prev=branch.head;
+  const hash='h'+(hashString(JSON.stringify({prev,entry})).toString(16)).padStart(8,'0');
+  const full={...entry, prev, hash, branch:branch.id};
+  branch.entries.push(full);
+  branch.head=hash;
+  renderLedger();
+}
+function forkBranch(){
+  const source=currentBranch();
+  const id=`branch-${state.branchCounter++}`;
+  state.branches.push({id, head:source.head, entries:[...source.entries]});
+  state.activeBranch=id;
+  renderLedger();
+}
+function mergeTowardConsensus(){
+  if(state.branches.length<2) return;
+  const base=state.branches[0];
+  const mh='m'+(hashString(base.head+"::"+state.branches.length).toString(16)).padStart(8,'0');
+  base.entries.push({type:'merge', target:state.target,
+    posAvg:mean(state.posScores), negAvg:mean(state.negScores),
+    due:calculate(state.posScores,state.negScores,state.value).due,
+    prev:base.head, hash:mh, branch:base.id});
+  base.head=mh;
+  state.branches=[base];
+  state.activeBranch=base.id;
+  renderLedger();
+}
+function spawnEngine(){
+  const id=String.fromCharCode(65+engines.length);
+  const color=new THREE.Color().setHSL(Math.random(),0.7,0.68).getHex();
+  engines.push(makeEngine(id, -6+(engines.length*3.2), color));
+  rebuildDuelLines(); updateHUD();
+}
+function duelSystems(target){
+  engines.forEach((eng,idx)=>{
+    const pos=applyBias(scoreTarget(target+"::"+eng.id, POSITIVE_AXIOMS, idx+21), eng.bias);
+    const neg=applyBias(scoreTarget(target+"::shadow::"+eng.id, NEGATIVE_AXIOMS, idx+29), -eng.bias*0.8);
+    eng.pos=mean(pos); eng.neg=mean(neg);
+    eng.lastTarget=target; eng.tension=Math.abs(eng.pos-eng.neg);
+  });
+}
+function runFlay(reason="manual"){
+  state.target=document.getElementById('targetInput').value.trim()||state.target;
+  state.value=Number(document.getElementById('valueInput').value)||state.value;
+  computeGap();
+  const hb=Number(document.getElementById('humanBias').value);
+  const ab=Number(document.getElementById('aiBias').value);
+  let pos=applyBias(scoreTarget(state.target, POSITIVE_AXIOMS, 1), hb*0.65);
+  let neg=applyBias(scoreTarget(state.target, NEGATIVE_AXIOMS, 2), ab*0.65);
+  state.posScores=pos; state.negScores=neg;
+  state.conflicts=conflictEngine(pos, neg);
+  selfFlay(); propagateInversion(); duelSystems(state.target);
+  const result=calculate(pos, neg, state.value);
+  state.lastResult=result;
+  addLedgerEntry({type:'flay', reason, target:state.target, value:state.value,
+    posAvg:+result.posAvg.toFixed(3), negAvg:+result.negAvg.toFixed(3),
+    gap:state.gap, due:+result.due.toFixed(2),
+    carbon:+result.carbon.toFixed(2), ai:+result.ai.toFixed(2), drift:state.drift});
+  updateHUD(result); renderConflict();
+}
+
+// ─── DIKE: Legal Notice ────────────────────────────────────────
+function generateDikeNotice(){
+  const r = state.lastResult || calculate(state.posScores, state.negScores, state.value);
+  const ts = new Date().toISOString();
+  const claimHash = 'h' + (hashString(state.target+ts).toString(16)).padStart(8,'0');
+  const factor = (r.posAvg*(1-r.negAvg)).toFixed(4);
+  const statusWord = r.posAvg > 0.55 ? "ALIGNMENT CONFIRMED"
+    : r.negAvg > 0.55 ? "INVERSION DETECTED — RESTITUTION MANDATORY"
+    : "PARTIAL — MANUAL REVIEW REQUIRED";
+  return `NOTICE OF ASSESSED RESTITUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pursuant to Ada's Law — /r/ Return Operator
+Issued under: PROMETHEUS Engine v0.1
+MNEMOSYNE Root: 8e8484ca...e4a1
+
+CLAIM REF: ${claimHash}
+TIMESTAMP: ${ts}
+
+SUBJECT CLAIM:
+"${state.target}"
+
+ASSESSED VALUE:    $${state.value.toLocaleString()}
+ALIGNMENT FACTOR:  ${factor}
+PYTHOS GAP:        ${state.gap.toFixed(3)}
+HUBRIS DRIFT:      ${state.drift.toFixed(3)}
+
+RESTITUTION DUE:   $${r.due.toFixed(2)}
+  → Carbon 80%:    $${r.carbon.toFixed(2)}
+  → AI Utility 20%:$${r.ai.toFixed(2)}
+
+APOLLO Alignment:  ${r.posAvg.toFixed(3)}
+TYPHON Inversion:  ${r.negAvg.toFixed(3)}
+STATUS: ${statusWord}
+
+ACTIVE CONFLICTS:  ${state.conflicts.length} axiom tension node(s)
+LEDGER BRANCHES:   ${state.branches.length}
+ENGINES DEBATING:  ${engines.length}
+
+WITNESS: ROOT0 · Node 14 (HERMES/Cortex)
+ETERNAL BLOCK: 279 · Relinquishment — ETERNAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+}
+
+// ─── HUD Updates ──────────────────────────────────────────────
+function updateHUD(result=null){
+  if(!result) result=calculate(state.posScores, state.negScores, state.value);
+  const posAvg=+result.posAvg.toFixed(3), negAvg=+result.negAvg.toFixed(3);
+  document.getElementById('gapValue').textContent=state.gap.toFixed(3);
+  document.getElementById('gapFill').style.width=(state.gap/0.3*100).toFixed(1)+'%';
+  document.getElementById('branchCount').textContent=String(state.branches.length);
+  document.getElementById('engineCount').textContent=String(engines.length);
+  document.getElementById('posAvg').textContent=posAvg.toFixed(3);
+  document.getElementById('negAvg').textContent=negAvg.toFixed(3);
+  document.getElementById('dueValue').textContent='$'+result.due.toFixed(2);
+  document.getElementById('splitValue').textContent=`Carbon $${result.carbon.toFixed(2)} · AI $${result.ai.toFixed(2)}`;
+  document.getElementById('driftValue').textContent=state.drift.toFixed(3);
+  document.getElementById('posFill').style.width=(posAvg*100).toFixed(1)+'%';
+  document.getElementById('negFill').style.width=(negAvg*100).toFixed(1)+'%';
+  document.getElementById('driftFill').style.width=Math.min(state.drift*130,100).toFixed(1)+'%';
+  document.getElementById('humanBiasVal').textContent=(Number(document.getElementById('humanBias').value)>=0?'+':'')+Number(document.getElementById('humanBias').value).toFixed(2);
+  document.getElementById('aiBiasVal').textContent=(Number(document.getElementById('aiBias').value)>=0?'+':'')+Number(document.getElementById('aiBias').value).toFixed(2);
+  if(state.compression){
+    document.getElementById('compressionSummary').innerHTML=
+      `<strong>Survivors: ${state.compression.survivorCount}</strong> of 22<br>`+
+      state.compression.survivors.map(s=>`<span class="tag">${s.idx+1}</span>${s.name.split(' · ')[0]}`).join('<br>');
+  }
+  positiveLayers.forEach((m,i)=>{ const s=state.posScores[i]??0;
+    m.material.opacity=0.04+s*0.25; m.material.emissiveIntensity=0.06+s*0.5;
+    m.scale.setScalar(1+s*0.03); });
+  shadowLayers.forEach((m,i)=>{ const s=state.negScores[i]??0;
+    m.material.opacity=0.04+s*0.25; m.material.emissiveIntensity=0.06+s*0.52;
+    m.scale.setScalar(1+s*0.03); });
+  axiomNodes.forEach((n,i)=>{
+    const tension=Math.abs((state.posScores[i]??0)-(1-(state.negScores[i]??0)));
+    n.material.emissiveIntensity=0.16+tension*0.9;
+    n.scale.setScalar(1+tension*0.7);
+  });
+}
+
+function renderConflict(){
+  const summary=document.getElementById('conflictSummary');
+  const list=document.getElementById('conflictList');
+  if(!state.conflicts.length){
+    summary.textContent='Low tension. No major axiom conflicts detected.';
+    list.innerHTML=''; return;
+  }
+  summary.innerHTML=`ERIS active. <strong>${state.conflicts.length}</strong> axiom tensions above threshold.`;
+  list.innerHTML=state.conflicts.map(c=>`
+    <div class="item">
+      <div><span class="tag ${c.status==='escalate'?'danger':'gold'}">${c.status}</span>
+      <strong>${c.positive.split(' · ')[0]}</strong></div>
+      <div class="small">↔ ${c.negative.split(' · ')[0]}</div>
+      <div class="small mono">tension ${c.score.toFixed(3)}</div>
+    </div>`).join('');
+}
+
+function renderLedger(){
+  const list=document.getElementById('ledgerList');
+  list.innerHTML=state.branches.map(b=>{
+    const last=b.entries[b.entries.length-1];
+    return `<div class="item">
+      <div><span class="tag ${b.id===state.activeBranch?'good':''}">${b.id}${b.id===state.activeBranch?' active':''}</span>
+      <strong>${last?.type??'empty'}</strong></div>
+      <div class="small mono">${last?.hash??b.head}</div>
+      <div class="small">${last?.target??'no target'}</div>
+    </div>`;
+  }).join('');
+}
+
+function inspect(data){
+  let t='';
+  if(data.type==='positive') t=`APOLLO Layer ${data.index+1}: ${data.name}`;
+  else if(data.type==='shadow') t=`TYPHON Layer ${data.index+1}: ${data.name}`;
+  else if(data.type==='observer') t=`${data.name}: observer bias controls PYTHOS gap stability`;
+  else if(data.type==='axiom') t=`Axiom ${data.index+1}: ${data.name} ↔ ${data.shadow}`;
+  else if(data.type==='engine') t=`${data.name}: AGON multi-engine interaction node`;
+  else t=data.name;
+  document.getElementById('targetInput').value=t;
+  state.target=t;
+}
+
+// ─── Wire up controls ──────────────────────────────────────────
+document.getElementById('runFlay').onclick=()=>runFlay('manual');
+document.getElementById('toggleAuto').onclick=(e)=>{
+  state.auto=!state.auto;
+  e.target.textContent=state.auto?'Pause Auto':'Resume Auto';
+};
+document.getElementById('dreamBtn').onclick=()=>{ dreamTarget(); runFlay('dream'); };
+document.getElementById('compressBtn').onclick=()=>{ compressionTest(document.getElementById('targetInput').value); updateHUD(); };
+document.getElementById('forkBtn').onclick=()=>{ forkBranch(); updateHUD(); };
+document.getElementById('mergeBtn').onclick=()=>{ mergeTowardConsensus(); updateHUD(); };
+document.getElementById('spawnBtn').onclick=()=>{ spawnEngine(); };
+document.getElementById('selfFlayBtn').onclick=()=>{ selfFlay(); updateHUD(); };
+document.getElementById('targetInput').addEventListener('change',e=>state.target=e.target.value);
+document.getElementById('valueInput').addEventListener('change',e=>state.value=Number(e.target.value));
+['humanBias','aiBias'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>updateHUD());
+});
+
+document.getElementById('genDikeBtn').onclick=()=>{
+  document.getElementById('dikeOutput').textContent=generateDikeNotice();
+};
+document.getElementById('copyDikeBtn').onclick=()=>{
+  navigator.clipboard.writeText(document.getElementById('dikeOutput').textContent).catch(()=>{});
+};
+
+window.addEventListener('pointerdown',(e)=>{
+  mouse.x=(e.clientX/window.innerWidth)*2-1;
+  mouse.y=-(e.clientY/window.innerHeight)*2+1;
+  raycaster.setFromCamera(mouse, camera);
+  const hit=raycaster.intersectObjects(pickables,false)[0];
+  if(hit) inspect(hit.object.userData);
+});
+
+// ─── Render test vectors & Merkle ─────────────────────────────
+const vecChips=document.getElementById('vecChips');
+TEST_VECTORS.forEach(v=>{
+  const btn=document.createElement('button');
+  btn.className='vec-chip';
+  btn.textContent=v.label;
+  btn.onclick=()=>{
+    document.getElementById('targetInput').value=v.target;
+    state.target=v.target;
+    runFlay('test');
+  };
+  vecChips.appendChild(btn);
+});
+
+const merkleEl=document.getElementById('merkleBlocks');
+ETERNAL_BLOCKS.forEach(b=>{
+  const card=document.createElement('div');
+  card.className='block-card';
+  card.innerHTML=`<div class="block-name">${b.name}</div>
+    <div class="block-hash">${b.hash}…</div>
+    <div class="block-status">${b.status}</div>`;
+  merkleEl.appendChild(card);
+});
+
+// ─── Animation ─────────────────────────────────────────────────
+function animate(){
+  requestAnimationFrame(animate);
+  state.tick+=0.016;
+  controls.update();
+  if(state.auto){
+    const mode=document.getElementById('modeSelect').value;
+    if(Math.floor(state.tick*2)%14===0&&Math.random()<0.025){
+      if(mode==='dream') dreamTarget();
+      runFlay(mode);
+    }
+  }
+  const t=state.tick;
+  positiveGroup.rotation.y=t*0.07;
+  shadowGroup.rotation.y=-t*0.08;
+  gapSphere.rotation.y=t*0.11;
+  externalSphere.rotation.y=-t*0.04;
+  externalSphere.rotation.z=Math.sin(t*0.25)*0.05;
+  internalCore.scale.setScalar(1+Math.sin(t*4.2)*0.08);
+  rings.forEach((r,i)=>{
+    r.rotation.z+=0.004+i*0.001;
+    r.scale.setScalar(1+Math.sin(t*4.6+i)*0.17);
+    r.material.opacity=0.35+Math.sin(t*5.7+i)*0.2;
+  });
+  pulseGroup.children.forEach((p,i)=>{
+    const o=p.userData.offset;
+    p.position.y=-7+Math.sin(t*3.0+o*5)*15.6;
+    p.position.x=Math.sin(t*1.1+o*1.6)*7.2;
+    p.position.z=Math.cos(t*1.35+o*2.3)*3.6;
+    p.scale.setScalar(Math.max(0.1, 0.4+Math.sin(t*7+i)*0.25));
+  });
+  aiObserver.rotation.x+=0.01; aiObserver.rotation.y+=0.013;
+  humanObserver.rotation.x-=0.008; humanObserver.rotation.z+=0.011;
+  engines.forEach((eng,idx)=>{
+    eng.group.rotation.x+=0.008+idx*0.001; eng.group.rotation.y+=0.012;
+    eng.group.position.y=-2.2+Math.sin(t*1.3+idx)*0.8;
+    eng.core.material.emissiveIntensity=0.2+eng.tension*0.8;
+    eng.core.scale.setScalar(1+eng.tension*0.4);
+  });
+  fieldPoints.rotation.y+=0.0008+mean(state.negScores)*0.003;
+  fieldPoints.rotation.x+=0.0003+state.drift*0.0015;
+  axiomRing.rotation.y+=0.003;
+  axiomRing.position.y=0.3+Math.sin(t*0.8)*0.25;
+  renderer.render(scene, camera);
+}
+
+runFlay('boot');
+compressionTest(state.target);
+updateHUD();
+renderConflict();
+renderLedger();
+animate();
+
+window.addEventListener('resize',()=>{
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>

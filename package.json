@@ -1,0 +1,17 @@
+{
+  "name": "hephaestus",
+  "version": "0.1.0",
+  "description": "The divine forge. PROMETHEUS restitution engine: 22 Greek-named positive axioms, 22 shadow inversions, gap instability, self-flay, axiom conflict, observer bias, branching ledger, DIKE legal output. Three.js visualization. DAEDALUS spec. PROTEUS behaviors. THEMIS Merkle witness.",
+  "author": "David Lee Wise (ROOT0) / TriPod LLC",
+  "license": "CC-BY-ND-4.0",
+  "homepage": "https://github.com/DavidWise01/hephaestus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidWise01/hephaestus.git"
+  },
+  "keywords": [
+    "restitution-engine", "prometheus", "greek-gods", "axiom-conflict",
+    "gap-instability", "observer-bias", "branching-ledger", "three-js",
+    "dike-legal", "merkle", "root0", "tripod"
+  ]
+}

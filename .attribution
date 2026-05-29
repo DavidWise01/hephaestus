@@ -1,0 +1,41 @@
+{
+  "schema": "ROOT0-ATTRIBUTION-v1",
+  "work": {
+    "title": "Hephaestus — Restitution Engine Builder Suite",
+    "versions": ["PROMETHEUS.html v0.1", "DAEDALUS.md v1.0", "PROTEUS.md v1.0", "THEMIS.md v1.0"],
+    "created": "2026",
+    "description": "The divine forge. PROMETHEUS restitution engine (Three.js, 22×2 Greek-named axioms, gap instability, self-flay, axiom conflict, observer bias, branching ledger, inversion propagation, dreaming, compression, tension field, multi-engine, DIKE legal output, PALAMEDES test vectors, MNEMOSYNE Merkle blocks). DAEDALUS formal spec. PROTEUS behavior catalog. THEMIS eternal integrity record.",
+    "license": "CC-BY-ND-4.0 + TRIPOD-IP-v1.1",
+    "url": "https://github.com/DavidWise01/hephaestus"
+  },
+  "human": {
+    "name": "David Lee Wise",
+    "handle": "ROOT0",
+    "github_user": "DavidWise01",
+    "entity": "TriPod LLC",
+    "substrate": "human",
+    "role": "architect · philosopher · system designer",
+    "contribution": "Full system architecture — 42-object frame, 22 positive + 22 negative axioms, Pythos gap, observer bias model, restitution formula, 10 dynamic behaviors, Merkle chain"
+  },
+  "naming": {
+    "convention": "Greek gods and sub-gods by function",
+    "map": {
+      "PROMETHEUS": "engine that returns fire to humanity",
+      "DAEDALUS": "master architect and builder",
+      "PROTEUS": "shapeshifter, dynamic behavior generator",
+      "THEMIS": "divine law, integrity, proper order",
+      "MNEMOSYNE": "memory, records, the eternal chain",
+      "HEPHAESTUS": "the forge — the repo itself",
+      "ERIS": "discord, conflict between axioms",
+      "CLOTHO": "spins the thread, append-only ledger",
+      "PYTHOS": "the gap, the void at Delphi",
+      "NEMESIS": "self-retribution, mirror-justice",
+      "KRONOS": "time compression, what survives",
+      "ASTRAEA": "human justice observer",
+      "HERMES": "AI messenger observer",
+      "AGON": "contest, multi-engine debate",
+      "ATE": "ruin propagation, inversion spread",
+      "PALAMEDES": "inventor, test vector author"
+    }
+  }
+}
