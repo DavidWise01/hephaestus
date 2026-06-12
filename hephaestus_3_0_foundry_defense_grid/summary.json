@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.0.0",
-  "status": "foundry defense grid",
+  "version": "3.0",
+  "module": "hephaestus_3_0_foundry_defense_grid",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

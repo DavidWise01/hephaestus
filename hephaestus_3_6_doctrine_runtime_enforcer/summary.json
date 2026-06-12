@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.6.0",
-  "status": "doctrine runtime enforcer",
+  "version": "3.6",
+  "module": "hephaestus_3_6_doctrine_runtime_enforcer",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

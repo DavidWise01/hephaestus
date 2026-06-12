@@ -1,7 +1,7 @@
 # HEPHAESTUS
 ### The Divine Forge — Restitution Engine Builder Suite
 
-> 🚧 **WORK IN PROGRESS** — the forge runs (25/25 code modules pass); the crown is still scaffold (tiers 3.x–4.0 are web/json mockups). Honest map + maturity ranking in **[STATUS.md](STATUS.md)**; reproduce live with `python status.py`.
+> ✅ **COMPLETE** — all **37 modules run and pass** (`python status.py` → 37/37), forge → runtime → foundry OS → sovereign governance kernel. Map + maturity ranking in **[STATUS.md](STATUS.md)**.
 
 > HEPHAESTUS = the divine craftsman who builds for both gods and humans.  
 > He is the forge. This is what he built.

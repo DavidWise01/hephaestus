@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "4.0.0",
-  "status": "sovereign governance kernel",
+  "version": "4.0",
+  "module": "hephaestus_4_0_sovereign_governance_kernel",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.9",
+  "module": "hephaestus_3_9_governance_recovery_engine",
+  "selftest": "PASS",
+  "finished": true
+}

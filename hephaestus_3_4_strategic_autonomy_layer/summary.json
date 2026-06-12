@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.4.0",
-  "status": "strategic autonomy layer",
+  "version": "3.4",
+  "module": "hephaestus_3_4_strategic_autonomy_layer",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

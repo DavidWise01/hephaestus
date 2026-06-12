@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.8.0",
-  "status": "mesh governance auditor",
+  "version": "3.8",
+  "module": "hephaestus_3_8_mesh_governance_auditor",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

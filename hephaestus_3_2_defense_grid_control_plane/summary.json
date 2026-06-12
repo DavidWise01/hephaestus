@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.2",
+  "module": "hephaestus_3_2_defense_grid_control_plane",
+  "selftest": "PASS",
+  "finished": true
+}

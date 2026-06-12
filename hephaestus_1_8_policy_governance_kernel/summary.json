@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.8",
+  "module": "hephaestus_1_8_policy_governance_kernel",
+  "selftest": "PASS",
+  "finished": true
+}

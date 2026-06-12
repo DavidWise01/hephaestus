@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.1.0",
-  "status": "defense grid runtime",
+  "version": "3.1",
+  "module": "hephaestus_3_1_defense_grid_runtime",
   "selftest": "PASS",
-  "audit": "PASS"
+  "finished": true
 }

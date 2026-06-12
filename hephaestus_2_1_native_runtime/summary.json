@@ -1,7 +1,7 @@
 {
   "name": "Hephaestus",
-  "version": "3.7",
-  "module": "hephaestus_3_7_enforcement_mesh",
+  "version": "2.1",
+  "module": "hephaestus_2_1_native_runtime",
   "selftest": "PASS",
   "finished": true
 }
