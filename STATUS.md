@@ -10,7 +10,7 @@
 
 ```
 $ python status.py
-HEPHAESTUS · STATUS — 37 pass · 0 fail · 0 data-only  (of 37 modules)
+HEPHAESTUS · STATUS — 39 pass · 0 fail · 0 data-only  (of 39 modules)
 ```
 
 | Tier | Modules | State |
@@ -53,6 +53,12 @@ Each of the 12 formerly web/json-only tiers now has a genuine `hephaestus/` pack
 The `4.0` kernel is the keystone: a decision is enacted **only if** the required authority is granted **and** the ledger verifies — so the demo enacts a legitimate ratification and *rejects* an unbound seizure. Authority is checked, not assumed.
 
 ---
+
+## The heart — an artifact that builds better artifacts
+
+The point of the whole stack is **`forge/hephaestus_forge.py`** (front door **FORGE.html**): the forge takes an artifact (scored against engine 4.1's six constitutional articles), and pass by pass applies a named craft to its **weakest** article, minting a NEW artifact whose parent is the previous one's hash — a provenance lineage where **every child is strictly better than its parent**, climbing until all six articles clear their thresholds and the artifact is *constitutional*. The forge is itself an artifact (one file); given an artifact, it returns a better one. The demo lifts a weak system from total 3.11 → 5.00 in 15 monotone passes. That recursion — an artifact that builds better artifacts — is what Hephaestus is.
+
+(`hephaestus_4_1_constitutional_engine` defines what "better" means: the articles, the rights framework, separation of powers, amendment by two-thirds quorum, the appeal process — all now executable.)
 
 ## Maturity ranking — where it is now
 

@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "constitution_registered",
+    "payload_hash": "5c15c981b96c00a1751ceb059055e9266dcf814d25b87d68ceee181ae8b17999",
+    "prev_hash": "GENESIS",
+    "entry_hash": "f9c861266d248d2bcda018905dafdf13972bbf1d9b8319715afc66d731686bcd"
+  },
+  {
+    "kind": "authority_delegated",
+    "payload_hash": "1047eeabd143c6002babd9c3cc767b337c70fdcc605c07db8479466d0a9a2695",
+    "prev_hash": "f9c861266d248d2bcda018905dafdf13972bbf1d9b8319715afc66d731686bcd",
+    "entry_hash": "6a6853672dc081540bc13fd03218381e45e51ee0dbc640941d87f78d51863cb3"
+  },
+  {
+    "kind": "powers_separated",
+    "payload_hash": "b771b4712316a0234ccc070e9a60655183757b24fa8873bd25cec60a435ff04a",
+    "prev_hash": "6a6853672dc081540bc13fd03218381e45e51ee0dbc640941d87f78d51863cb3",
+    "entry_hash": "cd4a74418ebcffc8f6c5d3c9c20c03b265ce1eaf50a89ce2f580d880aac755ca"
+  },
+  {
+    "kind": "jurisdiction_loaded",
+    "payload_hash": "0c450eb67e1452d43c499906047a1e24d4e9d7d0af9829d52ef9d333b41e4b79",
+    "prev_hash": "cd4a74418ebcffc8f6c5d3c9c20c03b265ce1eaf50a89ce2f580d880aac755ca",
+    "entry_hash": "f92da173fba8fed5c57925a6af074636d9d38e850abf8c43af125316905a1573"
+  },
+  {
+    "kind": "rights_loaded",
+    "payload_hash": "c0e2aaaeb9499e34ea9bc288409eb7d3e8e226e9df3bbf33607729327a758e26",
+    "prev_hash": "f92da173fba8fed5c57925a6af074636d9d38e850abf8c43af125316905a1573",
+    "entry_hash": "f8832f97609cda1a19016ab07ef2cf370d3fcb4c85e2983ebe0a0843daccd280"
+  },
+  {
+    "kind": "appeal_processed",
+    "payload_hash": "04d64563879418392752326c770e6ddf7fcc1f23d7f1caff4322a5161c136d82",
+    "prev_hash": "f8832f97609cda1a19016ab07ef2cf370d3fcb4c85e2983ebe0a0843daccd280",
+    "entry_hash": "e0a2134702cb27c85c7b972e3ac679e15050987e8c8220fbffb91005bc4af0e0"
+  },
+  {
+    "kind": "amendment_ratified",
+    "payload_hash": "f8857e94101aa6abc1f5bc091888b70f9b1712292c1e2d0de3177e4fba3e28bf",
+    "prev_hash": "e0a2134702cb27c85c7b972e3ac679e15050987e8c8220fbffb91005bc4af0e0",
+    "entry_hash": "bf6b2116d4d7e76605ee33b9b2cedfa1a0120b34ff5d10562a11940a9d7578bf"
+  },
+  {
+    "kind": "constitutional_audit_complete",
+    "payload_hash": "626b3be979c7c227f6de802932a4d20cc3051f32fa2932908faaddbf4f4dc5fd",
+    "prev_hash": "bf6b2116d4d7e76605ee33b9b2cedfa1a0120b34ff5d10562a11940a9d7578bf",
+    "entry_hash": "f7c6ea55ff4fb1b57b893547f26775bb04012861f4ec7551a8bbc0fe9377e6d2"
+  }
+]

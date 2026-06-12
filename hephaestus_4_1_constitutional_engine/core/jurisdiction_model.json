@@ -1,0 +1,21 @@
+{
+  "artifact": [
+    "pipeline",
+    "marketplace",
+    "trust_authority"
+  ],
+  "runtime": [
+    "runtime_monitor",
+    "defense_grid"
+  ],
+  "governance": [
+    "doctrine",
+    "enforcement",
+    "audit",
+    "recovery"
+  ],
+  "sovereign": [
+    "root_authority",
+    "constitutional_engine"
+  ]
+}

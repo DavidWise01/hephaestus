@@ -33,6 +33,8 @@ def classify(r):
 def main():
     roots = sorted(d for d in os.listdir(HERE)
                    if d.startswith("hephaestus_") and os.path.isdir(os.path.join(HERE, d)))
+    if os.path.exists(os.path.join(HERE, "forge", "selftest.py")):
+        roots.append("forge")   # the heart: an artifact that builds better artifacts
     rows = [(r, *classify(r)) for r in roots]
     P = sum(s == "PASS" for _, s, _ in rows)
     F = sum(s in ("FAIL", "ERROR") for _, s, _ in rows)

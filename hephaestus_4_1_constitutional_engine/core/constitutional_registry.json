@@ -1,0 +1,13 @@
+{
+  "version": "4.1.0",
+  "preamble": "Authority must be bounded, auditable, appealable, and repairable.",
+  "articles": {
+    "I": "Root authority exists only under constitutional constraint.",
+    "II": "Doctrine defines law but may not erase receipts.",
+    "III": "Enforcement may act only through authorized rules.",
+    "IV": "Audit has independent review power.",
+    "V": "Recovery may repair but may not rewrite history.",
+    "VI": "Appeals may challenge command, enforcement, audit, or recovery decisions.",
+    "VII": "Amendments require quorum, audit, and recorded legitimacy."
+  }
+}

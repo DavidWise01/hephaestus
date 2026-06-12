@@ -1,7 +1,9 @@
 # HEPHAESTUS
 ### The Divine Forge — Restitution Engine Builder Suite
 
-> ✅ **COMPLETE** — all **37 modules run and pass** (`python status.py` → 37/37), forge → runtime → foundry OS → sovereign governance kernel. Map + maturity ranking in **[STATUS.md](STATUS.md)**.
+> ✅ **COMPLETE** — all **39 modules run and pass** (`python status.py` → 39/39).
+>
+> **What Hephaestus is:** an artifact that builds better artifacts. The heart is **[FORGE.html](FORGE.html)** (and `forge/hephaestus_forge.py`) — feed it a weak artifact and it works the weakest article each pass, emitting a hash-linked lineage of strictly-better children until the artifact is *constitutional* (the bar set by engine 4.1). No CDN, runs headless. The legacy restitution UI is `PROMETHEUS.html`. Map + ranking in **[STATUS.md](STATUS.md)**.
 
 > HEPHAESTUS = the divine craftsman who builds for both gods and humans.  
 > He is the forge. This is what he built.

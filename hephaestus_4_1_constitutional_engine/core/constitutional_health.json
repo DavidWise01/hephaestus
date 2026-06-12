@@ -1,0 +1,15 @@
+{
+  "constitutional_registry": 1,
+  "delegated_authorities": 6,
+  "powers": 5,
+  "jurisdictions": 4,
+  "rights": 6,
+  "appeals": 1,
+  "amendments": 1,
+  "constitutional_audits": 1,
+  "ledger": {
+    "ok": true,
+    "entries": 8,
+    "head": "f7c6ea55ff4fb1b57b893547f26775bb04012861f4ec7551a8bbc0fe9377e6d2"
+  }
+}

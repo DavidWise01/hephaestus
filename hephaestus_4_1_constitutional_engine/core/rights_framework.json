@@ -1,0 +1,8 @@
+{
+  "right_to_audit": true,
+  "right_to_appeal": true,
+  "right_to_recorded_reason": true,
+  "right_to_recovery": true,
+  "right_to_non_erasure_of_receipts": true,
+  "right_to_due_process_before_destructive_action": true
+}

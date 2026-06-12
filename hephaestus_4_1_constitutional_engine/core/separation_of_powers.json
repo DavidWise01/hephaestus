@@ -1,0 +1,7 @@
+{
+  "legislative": "doctrine_engine",
+  "executive": "command_authority",
+  "judicial": "appeals_court",
+  "audit": "mesh_governance_auditor",
+  "recovery": "governance_recovery_engine"
+}

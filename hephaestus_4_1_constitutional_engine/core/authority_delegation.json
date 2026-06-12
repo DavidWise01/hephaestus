@@ -1,0 +1,28 @@
+{
+  "sovereign:root": [
+    "authorize",
+    "deny",
+    "halt"
+  ],
+  "authority:doctrine": [
+    "write_doctrine",
+    "compile_doctrine"
+  ],
+  "authority:enforcement": [
+    "enforce_rules",
+    "record_violations"
+  ],
+  "authority:audit": [
+    "inspect",
+    "issue_findings"
+  ],
+  "authority:recovery": [
+    "repair",
+    "resync"
+  ],
+  "authority:appeals": [
+    "review",
+    "overturn",
+    "remand"
+  ]
+}

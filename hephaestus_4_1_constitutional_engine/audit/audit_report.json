@@ -1,0 +1,17 @@
+{
+  "version": "4.1.0",
+  "status": "PASS",
+  "checks": {
+    "constitutional_registry": true,
+    "authority_delegation": true,
+    "separation_of_powers": true,
+    "jurisdiction_model": true,
+    "rights_framework": true,
+    "appeals_process": true,
+    "constitutional_amendments": true,
+    "constitutional_audit": true,
+    "constitutional_ledger": true,
+    "constitutional_dashboard": true,
+    "selftest": true
+  }
+}
