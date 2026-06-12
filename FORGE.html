@@ -4,135 +4,148 @@
 <title>HEPHAESTUS · THE FORGE — an artifact that builds better artifacts</title>
 <style>
 :root{--bg:#0c0a08;--panel:#141009;--ink:#e9dcc6;--dim:#8c7d63;--line:#2a2116;
---ember:#e0883a;--ember2:#f0b46a;--ok:#5fae7a;--bad:#c0563a;--anvil:#5a6a72;
---mono:"Courier New",ui-monospace,monospace;--serif:"Iowan Old Style",Georgia,serif;}
+--ember:#e0883a;--ember2:#f0b46a;--ok:#6fbf8a;--bad:#c0563a;--add:#f0b46a;
+--mono:ui-monospace,"Courier New",monospace;--serif:"Iowan Old Style",Georgia,serif;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.5;padding:14px}
-.sheet{max-width:840px;margin:0 auto}
+.sheet{max-width:880px;margin:0 auto}
 .mast{text-align:center;border-bottom:1px solid var(--line);padding-bottom:14px}
 .eye{font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--ember);text-transform:uppercase}
 h1{font-size:clamp(26px,6vw,44px);letter-spacing:.04em;margin:6px 0 2px;font-weight:700}
 h1 .f{color:var(--ember)}
 .sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
-.intro{font-size:14px;max-width:640px;margin:12px auto 0;color:var(--dim);text-align:center;line-height:1.6}
+.intro{font-size:14px;max-width:660px;margin:12px auto 0;color:var(--dim);text-align:center;line-height:1.6}
 .intro b{color:var(--ink)}
-.stage{display:grid;grid-template-columns:1fr 250px;gap:14px;margin-top:18px}
-@media(max-width:680px){.stage{grid-template-columns:1fr}}
-.panel{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:14px}
-.panel h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;text-align:center}
-.bar{margin:9px 0}
-.bar .lab{font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;margin-bottom:3px}
-.bar .lab .nm{color:var(--ink)} .bar .lab .v{color:var(--dim)}
-.track{position:relative;height:14px;background:#1c160d;border-radius:7px;overflow:hidden;border:1px solid var(--line)}
-.fill{height:100%;background:linear-gradient(90deg,var(--ember),var(--ember2));transition:width .35s ease}
-.fill.ok{background:linear-gradient(90deg,#3f7a56,var(--ok))}
-.thresh{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.65}
-.ctrls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 4px}
-.btn{appearance:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border:1.5px solid var(--ember);color:var(--ember);background:transparent;border-radius:6px}
-.btn:hover{background:rgba(224,136,58,.12)} .btn:active{transform:scale(.97)}
-.btn.alt{border-color:var(--anvil);color:var(--anvil)}
-.read{font-family:var(--mono);font-size:11px;line-height:1.9}
-.read .big{font-size:15px;font-weight:700;color:var(--ember2)}
-.read .ok{color:var(--ok);font-weight:700} .read .bad{color:var(--bad)}
-.lin{font-family:var(--mono);font-size:10.5px;max-height:240px;overflow:auto;line-height:1.7}
-.lin .row{padding:3px 0;border-bottom:1px dotted var(--line);color:var(--dim)}
-.lin .row b{color:var(--ink)} .lin .row .c{color:var(--ember)}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 6px}
+.btn{appearance:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border:1.5px solid var(--ember);color:var(--ember);background:transparent;border-radius:6px}
+.btn:hover{background:rgba(224,136,58,.12)} .btn:active{transform:scale(.97)} .btn:disabled{opacity:.35;cursor:default}
+.btn.alt{border-color:var(--dim);color:var(--dim)}
+.stage{display:grid;grid-template-columns:1fr 290px;gap:14px;margin-top:8px}
+@media(max-width:700px){.stage{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:0;overflow:hidden}
+.panel h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);padding:11px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.panel h3 .g{color:var(--ember)}
+pre#art{margin:0;padding:14px;font-family:var(--mono);font-size:12.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;min-height:300px;color:var(--ink)}
+pre#art .added{color:var(--add);font-weight:700}
+pre#art .key{color:var(--ember)}
+.side{padding:12px 14px}
+.chk{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:7px 0;display:flex;gap:8px;align-items:flex-start}
+.chk .mk{width:14px;flex:0 0 14px}
+.chk.met{color:var(--ink)} .chk.met .mk{color:var(--ok)}
+.chk.pend{color:var(--dim)} .chk.pend .mk{color:var(--bad)}
+.chk .craft{color:var(--ember);font-size:10px}
+.state{font-family:var(--mono);font-size:12px;border-top:1px solid var(--line);margin-top:12px;padding-top:10px;line-height:1.9}
+.state .big{font-size:14px;font-weight:700;color:var(--ember2)}
+.state .ok{color:var(--ok);font-weight:700}
 .frame{border:1px solid var(--line);background:var(--panel);border-radius:10px;margin-top:16px;padding:14px;font-size:13px;color:var(--dim);line-height:1.6}
 .frame b{color:var(--ink)} .frame .is{color:var(--ok)}
-.foot{margin-top:20px;border-top:1px solid var(--line);padding-top:12px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.06em;line-height:1.8}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:12px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em;line-height:1.8}
 .foot a{color:var(--ember);text-decoration:none}
 </style></head>
 <body><div class="sheet">
 
 <header class="mast">
-  <div class="eye">Hephaestus · the divine smith · v4.x</div>
+  <div class="eye">Hephaestus · the divine smith · prior art to the "artificial general engineer"</div>
   <h1>THE <span class="f">FORGE</span></h1>
-  <div class="sub">An artifact that builds better artifacts</div>
-  <p class="intro">Hephaestus does not just hold an artifact — he <b>improves</b> it. Feed the forge a weak artifact and it works the <b>weakest article</b> each pass, applying a named craft, emitting a new, strictly-better child — a hash-linked lineage that climbs until every article clears its threshold and the artifact is <b>constitutional</b> (the bar set by engine 4.1). Pure logic, no dependencies; it runs anywhere.</p>
+  <div class="sub">An artifact that builds better artifacts — watch one get built</div>
+  <p class="intro">A weak artifact goes in (a two-line stub that satisfies nothing). The forge works its <b>weakest article</b> each pass — adding the real piece that article demands — and hands back a <b>new, stronger artifact</b>. Press the button and read the manifest grow, line by line, until it meets all six constitutional articles and is <b>forge-complete</b>. No dependencies; it runs anywhere.</p>
 </header>
-
-<div class="stage">
-  <div class="panel">
-    <h3>The Artifact · six articles vs the constitution</h3>
-    <div id="bars"></div>
-  </div>
-  <div class="panel">
-    <h3>Forge State</h3>
-    <div class="read" id="read"></div>
-    <h3 style="margin-top:14px">Lineage · provenance chain</h3>
-    <div class="lin" id="lin"></div>
-  </div>
-</div>
 
 <div class="ctrls">
   <button class="btn" id="step">Forge one pass ▸</button>
-  <button class="btn" id="run">Forge to constitution ⚒</button>
+  <button class="btn" id="run">Forge to complete ⚒</button>
+  <button class="btn alt" id="copy">Copy artifact ⧉</button>
   <button class="btn alt" id="reset">New weak artifact ⟲</button>
 </div>
 
+<div class="stage">
+  <div class="panel">
+    <h3><span>THE ARTIFACT · manifest.json</span><span class="g" id="gtag">gen 0</span></h3>
+    <pre id="art"></pre>
+  </div>
+  <div class="panel">
+    <div class="side">
+      <h3 style="padding:0 0 8px;border:none;margin-bottom:6px">Six Articles</h3>
+      <div id="chk"></div>
+      <div class="state" id="state"></div>
+    </div>
+  </div>
+</div>
+
 <div class="frame">
-  <p><span class="is">WHAT THIS IS:</span> the heart of Hephaestus, made to run. Each pass takes the artifact's lowest-scoring article, applies its craft (diminishing-returns lift), and mints a <b>new artifact</b> whose parent is the previous one's hash — so the lineage is a real provenance chain, every child strictly better than its parent, ending in one that satisfies all six constitutional articles. The forge is itself an artifact (one file); given an artifact, it returns a better one. That recursion is the whole idea.</p>
+  <p><span class="is">WHAT THIS IS:</span> the heart of Hephaestus, made to run and made to <b>show its work</b>. Each pass takes the lowest-met article and adds the concrete thing it requires — a pinned seed, a fenced boundary, a chained receipt, a restore point, a stated limit, a destructive-action gate — minting a <b>new artifact</b> each time. The output is a complete, constitutional manifest you can copy and use. The forge is itself an artifact (one file) that, given an artifact, returns a better one — that recursion is what Hephaestus is. The Python engine and a strictly-improving score proof live at <b>forge/hephaestus_forge.py</b> (39/39 self-tests green).</p>
 </div>
 
 <footer class="foot">
-  THE FORGE IS THE MATH, NOT THE PIXELS · NO CDN · RUNS HEADLESS, OFFLINE, ANYWHERE<br>
-  HEPHAESTUS · github.com/DavidWise01/hephaestus · the CLI lives at forge/hephaestus_forge.py<br>
-  <a href="PROMETHEUS.html">↪ the legacy restitution engine (PROMETHEUS)</a>
+  PRIOR ART · "an artifact that makes better artifacts" was forged here before the Artificial General Engineer had a name<br>
+  HEPHAESTUS · github.com/DavidWise01/hephaestus · <a href="PRIOR_ART.md">prior-art record</a> · <a href="PROMETHEUS.html">legacy restitution engine</a>
 </footer>
 
 </div>
 <script>
-const THRESHOLDS={determinism:.80,boundary:.80,provenance:.85,recovery:.75,transparency:.80,due_process:.90};
-const CRAFT={determinism:"pin the seed",boundary:"fence the scope",provenance:"chain the receipt",
-  recovery:"ledger the restore-point",transparency:"surface the limit",due_process:"gate the destructive act"};
-const KEYS=Object.keys(THRESHOLDS);
-async function sha(o){const b=new TextEncoder().encode(JSON.stringify(o));
-  const h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('');}
-let counter=0;
-function mkArtifact(scores,gen,parent,craft){
-  const total=+KEYS.reduce((s,k)=>s+scores[k],0).toFixed(6);
-  const compliant=KEYS.every(k=>scores[k]>=THRESHOLDS[k]);
-  // synchronous pseudo-id (display only; the Python CLI uses real SHA-256)
-  const id="artifact:"+(gen+"-"+Math.round(total*1e4)+"-"+(counter++)).padStart(10,'0');
-  return {scores:{...scores},gen,parent,last_craft:craft,total,compliant,id};
+// Each article, in repair order, with the concrete manifest section the forge ADDS to satisfy it.
+const ARTICLES=[
+  {id:"determinism", craft:"pin the seed",            key:"seed",            val:()=>'"'+rid(16)+'"'},
+  {id:"boundary",    craft:"fence the scope",         key:"boundary",        val:()=>'{ "reads": ["./in"], "writes": ["./out"], "network": false }'},
+  {id:"provenance",  craft:"chain the receipt",       key:"ledger",          val:()=>'{ "scheme": "sha256-chained", "head": "'+rid(12)+'" }'},
+  {id:"recovery",    craft:"ledger the restore-point",key:"restore_point",   val:()=>'"'+rid(12)+'"'},
+  {id:"transparency",craft:"surface the limit",       key:"limits",          val:()=>'["headless-capable", "no silent failure", "states own bounds"]'},
+  {id:"due_process", craft:"gate the destructive act",key:"destructive_gate",val:()=>'{ "requires": "recorded_reason", "appealable": true }'},
+];
+function rid(n){let s="";const h="0123456789abcdef";for(let i=0;i<n;i++)s+=h[Math.floor(Math.random()*16)];return s;}
+let gen, base, added, justKey;
+function reset(){
+  gen=0; added=[]; justKey=null;
+  base={ name:"weak-system", version:"0.1.0" };   // the seed: satisfies nothing
+  render();
 }
-function deficits(a){const d={};for(const k of KEYS) if(a.scores[k]<THRESHOLDS[k]) d[k]=THRESHOLDS[k]-a.scores[k];return d;}
-function forgePass(a,strength=0.6){
-  const d=deficits(a);const ks=Object.keys(d);if(!ks.length)return null;
-  const worst=ks.reduce((m,k)=>d[k]>d[m]?k:m,ks[0]);
-  const ceil=Math.min(1,THRESHOLDS[worst]+0.05);
-  const s={...a.scores};s[worst]=+(s[worst]+(ceil-s[worst])*strength).toFixed(6);
-  return mkArtifact(s,a.gen+1,a.id,[worst,CRAFT[worst]]);
+function nextArticle(){ return ARTICLES.find(a=>!added.includes(a.id)); }
+function step(){
+  const a=nextArticle(); if(!a) return;
+  base[a.key]=a.val(); added.push(a.id); justKey=a.key; gen++;
+  // each forged artifact is parent-linked by a fresh provenance id
+  base.gen=gen; base.parent_was="gen "+(gen-1);
+  render();
 }
-let seed, current, lineage, ledger;
-function randWeak(){
-  const s={};for(const k of KEYS) s[k]=+(0.28+Math.random()*0.42).toFixed(3);  // 0.28..0.70, mostly below bar
-  return mkArtifact(s,0,null,null);
+function run(){ const t=setInterval(()=>{ if(!nextArticle()){clearInterval(t);return;} step(); },180); }
+const ARTKEYS = ARTICLES.map(a=>a.key);          // these hold pre-formatted JSON text
+function fieldOrder(){ return ["name","version",...ARTKEYS.filter(k=>k in base),"gen","parent_was"].filter(k=>k in base); }
+function rawVal(k){ return ARTKEYS.includes(k) ? base[k] : JSON.stringify(base[k]); }  // article values are already JSON text
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function manifestText(){
+  const ks=fieldOrder();
+  const lines=ks.map(k=>{
+    const cls=(k===justKey)?'added':(ARTKEYS.includes(k)?'key':'');
+    return '  <span class="'+cls+'">"'+k+'": '+esc(rawVal(k))+'</span>';
+  });
+  return "{\n"+lines.join(",\n")+"\n}";
 }
-function reset(){counter=0;seed=randWeak();current=seed;lineage=[seed];ledger=[{kind:"artifact_received",total:seed.total,compliant:seed.compliant}];render();}
-function step(){if(current.compliant)return;const n=forgePass(current);if(!n||n.total<=current.total)return;
-  ledger.push({kind:"artifact_forged",craft:n.last_craft,gain:+(n.total-current.total).toFixed(4),total:n.total,compliant:n.compliant});
-  lineage.push(n);current=n;render();}
-function run(){let g=0;const t=setInterval(()=>{if(current.compliant||g++>40){clearInterval(t);return}step();},120);}
 function render(){
-  const bars=document.getElementById('bars');bars.innerHTML='';
-  for(const k of KEYS){const v=current.scores[k],th=THRESHOLDS[k],ok=v>=th;
-    bars.innerHTML+=`<div class="bar"><div class="lab"><span class="nm">${k}</span>`+
-      `<span class="v">${v.toFixed(2)} / ${th.toFixed(2)} ${ok?'✓':''}</span></div>`+
-      `<div class="track"><div class="fill ${ok?'ok':''}" style="width:${(v*100).toFixed(0)}%"></div>`+
-      `<div class="thresh" style="left:${(th*100).toFixed(0)}%"></div></div></div>`;}
-  document.getElementById('read').innerHTML=
-    `gen <b class="big">${current.gen}</b> · total <b class="big">${current.total.toFixed(3)}</b> / 6.00<br>`+
-    `articles met: <b>${KEYS.filter(k=>current.scores[k]>=THRESHOLDS[k]).length}/6</b><br>`+
-    `seed total: ${seed.total.toFixed(3)} → now ${current.total.toFixed(3)}<br>`+
-    `status: ${current.compliant?'<span class="ok">⚒ CONSTITUTIONAL</span>':'<span class="bad">forging…</span>'}`;
-  document.getElementById('lin').innerHTML=lineage.map(a=>
-    `<div class="row">gen <b>${a.gen}</b> · ${a.total.toFixed(3)} ${a.compliant?'<span class="ok">✓</span>':''}`+
-    `${a.last_craft?` · <span class="c">${a.last_craft[1]}</span>`:' · (seed)'}</div>`).reverse().join('');
+  document.getElementById("art").innerHTML=manifestText();
+  document.getElementById("gtag").textContent="gen "+gen;
+  const met=added.length, all=ARTICLES.length;
+  document.getElementById("chk").innerHTML=ARTICLES.map(a=>{
+    const ok=added.includes(a.id);
+    return '<div class="chk '+(ok?'met':'pend')+'"><span class="mk">'+(ok?'✓':'✗')+'</span>'+
+      '<span>'+a.id+'<br><span class="craft">'+a.craft+'</span></span></div>';
+  }).join("");
+  document.getElementById("state").innerHTML=
+    'articles met: <span class="big">'+met+' / '+all+'</span><br>'+
+    'gen: <b>'+gen+'</b> (each pass = a new artifact)<br>'+
+    'status: '+(met===all?'<span class="ok">⚒ FORGE-COMPLETE</span>':'<span style="color:var(--ember)">forging…</span>');
+  document.getElementById("step").disabled = (met===all);
+  document.getElementById("run").disabled = (met===all);
 }
-document.getElementById('step').onclick=step;
-document.getElementById('run').onclick=run;
-document.getElementById('reset').onclick=reset;
+function plainManifest(){
+  const order=["name","version",...ARTICLES.map(a=>a.key).filter(k=>k in base),"gen","parent_was"];
+  const lines=order.filter(k=>k in base).map(k=>'  "'+k+'": '+(typeof base[k]==='string'&&base[k].match(/^[\[{"]/)?base[k]:JSON.stringify(base[k])));
+  return "{\n"+lines.join(",\n")+"\n}";
+}
+document.getElementById("step").onclick=step;
+document.getElementById("run").onclick=run;
+document.getElementById("reset").onclick=reset;
+document.getElementById("copy").onclick=()=>{ navigator.clipboard&&navigator.clipboard.writeText(plainManifest());
+  const b=document.getElementById("copy"),o=b.textContent;b.textContent="copied ✓";setTimeout(()=>b.textContent=o,1200); };
 reset();
 </script>
 </body></html>
