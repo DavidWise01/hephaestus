@@ -309,8 +309,26 @@ Run a flay, then press Generate Notice.</div>
 {"imports":{"three":"https://unpkg.com/three@0.160.1/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.1/examples/jsm/"}}
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+// Graphics are BEST-EFFORT. If three.js (the CDN) or WebGL is unavailable — offline, file://,
+// a blocked CDN, or no GPU — the forge runs HEADLESS: every button and the whole restitution
+// engine still work; only the 3D backdrop is skipped. The forge is the math, not the pixels.
+let THREE, OrbitControls, GFX = false;
+const _stub = () => new Proxy(function(){}, {
+  get: (t, p) => p === 'domElement' ? document.createElement('canvas') : _stub(),
+  apply: () => _stub(), construct: () => _stub()
+});
+try {
+  const gl = document.createElement('canvas').getContext('webgl')
+          || document.createElement('canvas').getContext('experimental-webgl');
+  if (!gl) throw new Error('WebGL unavailable');
+  THREE = await import('three');
+  ({ OrbitControls } = await import('three/addons/controls/OrbitControls.js'));
+  GFX = true;
+} catch (e) {
+  console.warn('[forge] graphics unavailable — running headless:', e && e.message);
+  THREE = new Proxy({}, { get: () => function(){ return _stub(); } });
+  OrbitControls = function(){ return _stub(); };
+}
 
 // ─── Greek Axiom Names ──────────────────────────────────────
 const POSITIVE_AXIOMS = [
@@ -913,6 +931,7 @@ document.getElementById('copyDikeBtn').onclick=()=>{
 };
 
 window.addEventListener('pointerdown',(e)=>{
+  if(!GFX) return;  // no 3D scene to pick against in headless mode
   mouse.x=(e.clientX/window.innerWidth)*2-1;
   mouse.y=-(e.clientY/window.innerHeight)*2+1;
   raycaster.setFromCamera(mouse, camera);
