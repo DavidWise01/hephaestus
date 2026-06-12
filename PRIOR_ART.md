@@ -26,20 +26,33 @@ The two are the same shape: **a machine that makes better artifacts.** They even
 
 ## What is — and isn't — claimed (honestly)
 
-- ✅ **Independent, convergent creation.** This forge was conceived and built without reference to
-  Project Prometheus; the convergence on both the concept *and* the Prometheus name is genuine and
-  documented here.
-- ✅ **Timestamped & ledgered.** This repository's git history begins **2026-05-29**, and every module
-  carries a SHA-256 hash-chained ledger (`THEMIS.md` / `THEMIS.json`); the artifact-improvement
-  lineage in the forge is itself a provenance chain. These are durable, verifiable timestamps.
-- ⚠️ **NOT a priority claim over Project Prometheus.** Project Prometheus launched **Nov 2025**,
-  which predates this repository's git history (May 2026). Honest record-keeping requires stating
-  that plainly: this is *convergence*, not *priority*, on the public corporate timeline.
-- ⚠️ **Any earlier anchor must be its own artifact.** If a pulse-era predecessor of the forge concept
-  exists with a verifiable timestamp **before Nov 2025**, *that* artifact — not this repo — would be
-  the prior-art anchor. It should be cited here with its own ledgered date if/when located.
-- ⚖️ **Not legal advice.** A patent/priority determination is for counsel. This file is an honest
-  engineering provenance record, nothing more.
+The verifiable git timeline of THIS repository:
+
+| date | what landed |
+|------|-------------|
+| **2026-05-29** | "Launch Hephaestus" commit — **top-level docs only** (PROMETHEUS.html, README, the Greek doc-set) |
+| **2026-06-11** | **all 40 version-numbered modules** (`hephaestus_0_0` … `hephaestus_4_1`) FIRST enter version control — in a single day, not across time |
+| 2026-06-11 → 06-12 | repair, completion, the forge engine, this record |
+
+- ✅ **Independent, convergent creation.** The forge concept and the *Prometheus* name were arrived at
+  without reference to Bezos's Project Prometheus. The convergence on the same primitive is genuine.
+- ❌ **NOT prior art, and NOT a build-history.** This must be said plainly, because the version
+  numbers (0.0 → 4.1) *look* like an alpha→beta→release progression and are **not**: every module
+  first entered version control on **2026-06-11**, in one drop — there is no Nov-2025-onward,
+  iteration-by-iteration work trail in this repo. The timestamped reality is a **June 2026 snapshot**,
+  which is **after** Project Prometheus's Nov 2025 launch. A snapshot dated after the other party's
+  launch is not prior art. Calling it that would be the exact thing this project refuses: a claim
+  dressed as work.
+- ✅ **What IS real and defensible:** *reduction to practice, now.* As of June 2026 this is a small,
+  complete, fully self-tested instance (39/39 green) of "an artifact that builds better artifacts,"
+  with a constitution the output must satisfy and a ledger that proves it did. That is a real,
+  runnable contribution — independent of any priority question.
+- ⚠️ **The only valid earlier anchor is an earlier *artifact*.** If a pulse-era predecessor exists
+  with a verifiable timestamp **before Nov 2025** (a dated file, an older repo, a prior commit), then
+  *that* artifact — not this repo — is the anchor, and it must be cited here with its own evidence.
+  Until such an artifact is produced, no priority is claimed.
+- ⚖️ **Not legal advice.** A patent/priority determination is for counsel. This is an honest
+  engineering provenance record — including the parts that don't flatter it.
 
 ## Why it matters anyway
 
