@@ -1,6 +1,6 @@
 # HEPHAESTUS · STATUS
 
-> ✅ **COMPLETE — 37 / 37 modules run and pass.** The whole stack now executes, from the artifact compiler to the sovereign governance kernel. Reproduce any time with `python status.py`.
+> ✅ **COMPLETE — 39 / 39 modules run and pass.** The whole stack executes — from the artifact compiler, through the sovereign governance kernel and the constitution (4.1), to **the Forge: an artifact that builds better artifacts.** Reproduce any time with `python status.py`.
 
 **Author:** David Lee Wise (ROOT0) / TriPod LLC · **Finished:** 2026-06-11 (AVAN audit → repair → completion)
 
@@ -18,7 +18,8 @@ HEPHAESTUS · STATUS — 39 pass · 0 fail · 0 data-only  (of 39 modules)
 | **0.0 → 0.9** the forge | 9 | ✅ green |
 | **1.0 → 1.9** the runtime | 9 | ✅ green |
 | **2.0 → 2.8** the foundry OS | 9 | ✅ green |
-| **3.0 → 4.0** defense grid → sovereign kernel | 12 | ✅ green — **ported from scaffold to real code** |
+| **3.0 → 4.1** defense grid → constitutional engine | 13 | ✅ green — **ported from scaffold to real code** |
+| **the Forge** · artifact → better artifact | 1 | ✅ green — the heart (`forge/`, FORGE.html) |
 
 Every module carries its own `selftest.py` over a real, hash-chained ledger; all pass.
 
@@ -65,8 +66,8 @@ The point of the whole stack is **`forge/hephaestus_forge.py`** (front door **FO
 **A complete, coherent, runnable platform — ~8/10.** Every tier executes, every tier verifies its own hash-chained ledger, and the top of the stack enforces real legitimacy rather than rendering a dashboard of one. The honest gaps that remain are *engineering polish*, not missing substance:
 
 ## Where it could still go
-1. **CI badge** — a GitHub Action running `python status.py` on every push, so the 37/37 is enforced, not just snapshotted.
-2. **Package it** — wrap the 37 sibling trees as one installable (`pip install hephaestus`) with a unified CLI and a shared core (today the ledger idiom is duplicated per module).
+1. **CI badge** — a GitHub Action running `python status.py` on every push, so the 39/39 is enforced, not just snapshotted.
+2. **Package it** — wrap the 38 sibling trees as one installable (`pip install hephaestus`) with a unified CLI and a shared core (today the ledger idiom is duplicated per module).
 3. **Wire PROMETHEUS ↔ the forge** — make a flayed claim flow end-to-end into a forged, signed, ledgered artifact under sovereign governance.
 4. **Persist the ledgers** — the engines verify in-memory chains; back them with the on-disk JSON state the dashboards already render.
 
