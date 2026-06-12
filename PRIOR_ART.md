@@ -54,13 +54,43 @@ The verifiable git timeline of THIS repository:
 - ⚖️ **Not legal advice.** A patent/priority determination is for counsel. This is an honest
   engineering provenance record — including the parts that don't flatter it.
 
-## Why it matters anyway
+## State of Project Prometheus — researched 2026-06-12 (multi-source)
 
-Convergence is the signal, not the loss. When an independent builder and a $41B lab arrive at the
-same primitive — *an artifact that builds better artifacts* — the primitive is real. Hephaestus is a
-small, complete, runnable, fully self-tested instance of it (39/39 green), with one thing the big
-labs rarely publish: **a constitution the better artifact must satisfy, and a ledger that proves it
-did.** That is the contribution this repo stands on — measured, not overclaimed.
+Cross-checked across ~10 independent sources incl. the primary CNBC transcript and Wikipedia:
 
-> Sources for the Prometheus facts are external news reports (Axios, Inc., Semafor, CNBC, June 2026).
-> The Hephaestus timestamps are verifiable in this repo's git log and THEMIS ledger.
+- **No shipped product. No public version (no v1/v2/v3). No website. No demo. No published
+  research or technical milestone.** Bezos: it is *"premature"* to discuss specific achievements.
+- What exists: a **$41B valuation** ($6.2B at the Nov 2025 launch → a $12B round, June 2026),
+  **120+ employees** hired from Meta/OpenAI/DeepMind, offices in SF/London/Zurich, and one
+  acquisition — **General Agents** (a video-language-action model startup).
+- In plain terms: as of this date it is *"an operational engineer someday"* — a funded promise and
+  a vision, with **no running artifact a third party can point at.** That part needs no trusted
+  date; it is verifiable by *absence* (no repo, no app, no demo).
+
+## Convergence does not bar ownership — the MS-DOS point
+
+"It's a convergent primitive, so nobody owns it" is a **cop-out**, and the history says so. **MS-DOS
+was convergent and derivative**: Microsoft bought 86-DOS ("QDOS") from Tim Paterson / Seattle
+Computer Products (~$75k, 1981); 86-DOS was itself modelled closely on Digital Research's CP/M
+(Gary Kildall). A clone of a clone — and Microsoft **owned it, licensed it to IBM, and built an
+empire on it.** The value was never the originality of the idea; it was the **working
+implementation plus adoption/licensing.** Everything is "mathea" — derived from prior principles;
+convergence is the normal state of invention, not a disqualifier.
+
+So the honest frame for this repo is not "nobody owns the idea." It is:
+
+- The *idea* (a self-iterating artifact engineer) is owned by no one and is being chased by a $41B
+  lab that has **not shipped a version**.
+- What is ownable, and what this repo is, is a **specific reduction to practice that runs today** —
+  a constitution the output must satisfy and a ledger that proves it — plus whatever **adoption and
+  public, third-party-timestamped provenance** the author can accrue. (ROOT0's ingestion agents
+  cross-reference builds against external, dated public records — Reddit / arXiv / LinkedIn — which
+  is a legitimate way to establish a timestamp the author does not control.)
+
+That is the DOS playbook, stated plainly: convergent at the root, owned at the implementation,
+won at adoption.
+
+> Sources: the Prometheus facts are external reports (Wikipedia; CNBC primary transcript, 11 Jun 2026;
+> Built In; TechStartups; Dealroom). MS-DOS / 86-DOS / CP/M is established computing history. The
+> Hephaestus timestamps are verifiable in this repo's git log and THEMIS ledger — including the parts
+> that don't flatter it (see the timeline above).
