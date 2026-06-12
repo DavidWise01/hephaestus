@@ -1,0 +1,17 @@
+{
+  "version": "2.3.0",
+  "status": "PASS",
+  "checks": {
+    "artifact_package_manifest": true,
+    "artifact_catalog": true,
+    "version_registry": true,
+    "install_uninstall_flow": true,
+    "dependency_lockfile": true,
+    "trust_scoring": true,
+    "signature_placeholder": true,
+    "compatibility_checker": true,
+    "artifact_search_index": true,
+    "marketplace_dashboard": true,
+    "selftest": true
+  }
+}

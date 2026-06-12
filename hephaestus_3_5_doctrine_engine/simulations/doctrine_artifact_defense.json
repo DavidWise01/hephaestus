@@ -1,0 +1,13 @@
+{
+  "id": "sim:doctrine-artifact-defense",
+  "scenario": "critical artifact tamper with recovery path",
+  "decision_path": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "recommended_action": "quarantine_then_rollback",
+  "approved": true,
+  "confidence": 0.94
+}

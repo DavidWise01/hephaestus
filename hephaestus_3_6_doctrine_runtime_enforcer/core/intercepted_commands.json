@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cmd:001",
+    "action": "quarantine",
+    "severity": 92,
+    "evidence_snapshot": true
+  },
+  {
+    "id": "cmd:002",
+    "action": "kill",
+    "severity": 70,
+    "evidence_snapshot": false
+  },
+  {
+    "id": "cmd:003",
+    "action": "rollback",
+    "severity": 80,
+    "trusted_baseline": true
+  },
+  {
+    "id": "cmd:004",
+    "action": "manual_override",
+    "severity": 88,
+    "audit_receipt": true
+  }
+]

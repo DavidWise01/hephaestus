@@ -1,0 +1,20 @@
+{
+  "fields": [
+    "name",
+    "version",
+    "principles",
+    "rules",
+    "constraints"
+  ],
+  "rule_required_fields": [
+    "id",
+    "level",
+    "domain",
+    "law",
+    "priority"
+  ],
+  "constraint_required_fields": [
+    "id",
+    "text"
+  ]
+}

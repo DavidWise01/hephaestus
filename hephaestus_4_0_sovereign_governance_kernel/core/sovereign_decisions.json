@@ -1,0 +1,20 @@
+[
+  {
+    "id": "decision:001",
+    "action": "bind_governance_stack",
+    "decision": "allow",
+    "authority": "sovereign:root"
+  },
+  {
+    "id": "decision:002",
+    "action": "authorize_recovery_engine",
+    "decision": "allow",
+    "authority": "sovereign:root"
+  },
+  {
+    "id": "decision:003",
+    "action": "enforce_audit_before_override",
+    "decision": "allow",
+    "authority": "sovereign:root"
+  }
+]

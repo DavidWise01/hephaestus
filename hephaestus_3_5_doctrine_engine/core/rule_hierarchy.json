@@ -1,0 +1,43 @@
+{
+  "level_1_core_law": [
+    {
+      "id": "R001",
+      "level": 1,
+      "domain": "evidence",
+      "law": "snapshot evidence before destructive response",
+      "priority": 100
+    },
+    {
+      "id": "R002",
+      "level": 1,
+      "domain": "critical_threat",
+      "law": "critical threat permits quarantine",
+      "priority": 95
+    }
+  ],
+  "level_2_operational_law": [
+    {
+      "id": "R003",
+      "level": 2,
+      "domain": "service_continuity",
+      "law": "prefer rollback before kill when recovery path exists",
+      "priority": 80
+    },
+    {
+      "id": "R004",
+      "level": 2,
+      "domain": "operator_control",
+      "law": "manual override requires audit receipt",
+      "priority": 90
+    }
+  ],
+  "level_3_adaptive_law": [
+    {
+      "id": "R005",
+      "level": 3,
+      "domain": "deescalation",
+      "law": "deescalate when threat score is below 50",
+      "priority": 60
+    }
+  ]
+}

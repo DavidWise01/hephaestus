@@ -1,0 +1,16 @@
+{
+  "artifact_defense": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "evidence_preservation": [
+    "R001",
+    "R004"
+  ],
+  "low_risk_monitoring": [
+    "R004",
+    "R005"
+  ]
+}

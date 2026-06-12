@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.3.0",
+  "status": "autonomous command authority",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

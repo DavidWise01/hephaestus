@@ -1,0 +1,16 @@
+{
+  "sim:containment": {
+    "id": "sim:containment",
+    "campaign": "campaign:containment",
+    "success_probability": 0.88,
+    "risk_budget_status": "over_budget",
+    "approved": false
+  },
+  "sim:evidence": {
+    "id": "sim:evidence",
+    "campaign": "campaign:evidence",
+    "success_probability": 0.74,
+    "risk_budget_status": "within_budget",
+    "approved": true
+  }
+}

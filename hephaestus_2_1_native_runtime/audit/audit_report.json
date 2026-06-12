@@ -1,0 +1,16 @@
+{
+  "version": "2.1.0",
+  "status": "PASS",
+  "checks": {
+    "native_app_runner": true,
+    "process_supervisor": true,
+    "runtime_sandbox": true,
+    "port_allocator": true,
+    "service_lifecycle_manager": true,
+    "log_capture": true,
+    "crash_detection": true,
+    "restart_loop_protection": true,
+    "runtime_dashboard": true,
+    "live_selftest_runner": true
+  }
+}

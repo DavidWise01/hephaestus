@@ -1,0 +1,36 @@
+[
+  {
+    "command": "cmd:001",
+    "decision": "allow",
+    "applied_rules": [
+      "R001",
+      "R002"
+    ],
+    "violations": []
+  },
+  {
+    "command": "cmd:002",
+    "decision": "deny",
+    "applied_rules": [],
+    "violations": [
+      "R001",
+      "C003"
+    ]
+  },
+  {
+    "command": "cmd:003",
+    "decision": "allow",
+    "applied_rules": [
+      "R003"
+    ],
+    "violations": []
+  },
+  {
+    "command": "cmd:004",
+    "decision": "allow",
+    "applied_rules": [
+      "R004"
+    ],
+    "violations": []
+  }
+]

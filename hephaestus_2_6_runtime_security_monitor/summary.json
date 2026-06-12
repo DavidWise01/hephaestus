@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "2.6.0",
+  "status": "runtime security monitor",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

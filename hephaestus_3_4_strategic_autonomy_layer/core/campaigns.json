@@ -1,0 +1,20 @@
+{
+  "campaign:containment": {
+    "id": "campaign:containment",
+    "name": "dashboard containment",
+    "objective": "objective:dashboard",
+    "threat_pressure": 92,
+    "cost": 20,
+    "expected_benefit": 88,
+    "status": "candidate"
+  },
+  "campaign:evidence": {
+    "id": "campaign:evidence",
+    "name": "evidence hardening",
+    "objective": "objective:evidence",
+    "threat_pressure": 70,
+    "cost": 18,
+    "expected_benefit": 80,
+    "status": "candidate"
+  }
+}

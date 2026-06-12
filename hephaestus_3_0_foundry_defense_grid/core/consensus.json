@@ -1,0 +1,14 @@
+{
+  "artifact:operator-dashboard": {
+    "id": "consensus:001",
+    "artifact": "artifact:operator-dashboard",
+    "allow_score": 0.48,
+    "deny_score": 1.76,
+    "decision": "deny",
+    "votes": [
+      "vote:001",
+      "vote:002",
+      "vote:003"
+    ]
+  }
+}

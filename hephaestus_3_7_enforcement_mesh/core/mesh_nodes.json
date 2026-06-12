@@ -1,0 +1,17 @@
+{
+  "node:north": {
+    "region": "zone-a",
+    "status": "online",
+    "enforcement": "active"
+  },
+  "node:south": {
+    "region": "zone-b",
+    "status": "online",
+    "enforcement": "active"
+  },
+  "node:east": {
+    "region": "zone-c",
+    "status": "online",
+    "enforcement": "active"
+  }
+}

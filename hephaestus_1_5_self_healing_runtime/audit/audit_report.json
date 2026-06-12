@@ -1,0 +1,17 @@
+{
+  "version": "1.5.0",
+  "status": "PASS",
+  "checks": {
+    "failure_detector": true,
+    "repair_planner": true,
+    "node_recovery": true,
+    "service_restart_policy": true,
+    "state_reconciliation": true,
+    "leader_recovery": true,
+    "replication_repair": true,
+    "rollback_checkpoint": true,
+    "healing_journal": true,
+    "self_healing_dashboard": true,
+    "selftest": true
+  }
+}

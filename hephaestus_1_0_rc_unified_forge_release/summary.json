@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.0.0-rc",
+  "status": "unified forge release",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

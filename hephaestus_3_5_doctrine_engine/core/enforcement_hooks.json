@@ -1,0 +1,22 @@
+{
+  "command_router": [
+    "R004"
+  ],
+  "response_engine": [
+    "R001",
+    "R002",
+    "R003"
+  ],
+  "strategic_autonomy": [
+    "R002",
+    "R003",
+    "R005"
+  ],
+  "operator_console": [
+    "R004"
+  ],
+  "pipeline": [
+    "R001",
+    "R004"
+  ]
+}

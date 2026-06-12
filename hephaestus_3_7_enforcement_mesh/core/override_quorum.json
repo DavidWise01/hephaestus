@@ -1,0 +1,6 @@
+{
+  "request": "override:cmd:kill-worker",
+  "required_votes": 2,
+  "decision": "deny",
+  "status": "closed"
+}

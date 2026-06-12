@@ -1,0 +1,12 @@
+{
+  "required_fields": [
+    "operator",
+    "reason",
+    "audit_receipt",
+    "expiry"
+  ],
+  "status": "active",
+  "rules": [
+    "R004"
+  ]
+}

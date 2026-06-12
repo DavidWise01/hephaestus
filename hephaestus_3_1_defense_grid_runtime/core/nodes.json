@@ -1,0 +1,26 @@
+[
+  {
+    "id": "node:north",
+    "name": "north-runtime",
+    "region": "zone-a",
+    "status": "online",
+    "health": "ok",
+    "tick": 2
+  },
+  {
+    "id": "node:south",
+    "name": "south-runtime",
+    "region": "zone-b",
+    "status": "online",
+    "health": "ok",
+    "tick": 2
+  },
+  {
+    "id": "node:east",
+    "name": "east-runtime",
+    "region": "zone-c",
+    "status": "online",
+    "health": "ok",
+    "tick": 2
+  }
+]

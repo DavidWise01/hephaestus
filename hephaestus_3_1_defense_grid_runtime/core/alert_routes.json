@@ -1,0 +1,20 @@
+[
+  {
+    "id": "route:001",
+    "source": "node:north",
+    "target": "node:south",
+    "alert_type": "threat",
+    "artifact": "artifact:operator-dashboard",
+    "severity": 85,
+    "status": "routed"
+  },
+  {
+    "id": "route:002",
+    "source": "node:south",
+    "target": "node:east",
+    "alert_type": "threat",
+    "artifact": "artifact:operator-dashboard",
+    "severity": 85,
+    "status": "routed"
+  }
+]

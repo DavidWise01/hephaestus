@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.6.0",
+  "status": "doctrine runtime enforcer",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

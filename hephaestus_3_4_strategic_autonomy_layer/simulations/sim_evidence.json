@@ -1,0 +1,7 @@
+{
+  "id": "sim:evidence",
+  "campaign": "campaign:evidence",
+  "success_probability": 0.74,
+  "risk_budget_status": "within_budget",
+  "approved": true
+}

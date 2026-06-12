@@ -1,0 +1,18 @@
+{
+  "version": "1.7.0",
+  "status": "PASS",
+  "checks": {
+    "live_operator_console": true,
+    "command_router": true,
+    "fabric_action_buttons": true,
+    "node_service_artifact_panels": true,
+    "event_stream_viewer": true,
+    "health_timeline": true,
+    "manual_repair_trigger": true,
+    "deployment_trigger": true,
+    "state_editor": true,
+    "audit_viewer": true,
+    "console_dashboard_export": true,
+    "selftest": true
+  }
+}

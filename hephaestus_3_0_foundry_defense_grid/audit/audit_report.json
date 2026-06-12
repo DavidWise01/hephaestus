@@ -1,0 +1,17 @@
+{
+  "version": "3.0.0",
+  "status": "PASS",
+  "checks": {
+    "federated_soc_nodes": true,
+    "cross_node_threat_intelligence": true,
+    "trust_consensus": true,
+    "grid_incident_correlation": true,
+    "coordinated_response": true,
+    "containment_mesh": true,
+    "grid_evidence_bundle": true,
+    "defense_memory": true,
+    "alert_bus": true,
+    "defense_grid_dashboard": true,
+    "selftest": true
+  }
+}

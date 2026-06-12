@@ -1,0 +1,17 @@
+{
+  "version": "1.4.0",
+  "status": "PASS",
+  "checks": {
+    "distributed_kv_store": true,
+    "consensus_layer": true,
+    "state_replication": true,
+    "conflict_resolution": true,
+    "versioned_objects": true,
+    "state_snapshots": true,
+    "transaction_journal": true,
+    "distributed_locks": true,
+    "cluster_cache": true,
+    "state_dashboard": true,
+    "selftest": true
+  }
+}

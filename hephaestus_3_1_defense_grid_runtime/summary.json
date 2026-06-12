@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.1.0",
+  "status": "defense grid runtime",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

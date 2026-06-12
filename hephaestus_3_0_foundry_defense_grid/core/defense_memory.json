@@ -1,0 +1,12 @@
+{
+  "artifact:operator-dashboard": {
+    "artifact": "artifact:operator-dashboard",
+    "incidents": [
+      "gridcase:001"
+    ],
+    "outcomes": [
+      "federated_quarantine"
+    ],
+    "fingerprint": "1c2924d68f38efbfd5428b3e8b420bf7a0f78efa71f7902ef1fcf006f19e2cba"
+  }
+}

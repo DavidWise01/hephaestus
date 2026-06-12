@@ -1,0 +1,87 @@
+{
+  "version": "3.7.0",
+  "name": "Hephaestus Enforcement Mesh",
+  "health": {
+    "mesh_nodes": 3,
+    "online_nodes": 3,
+    "rule_syncs": 1,
+    "rules_synced": 5,
+    "violations": 1,
+    "propagated_violations": 1,
+    "override_quorums": 1,
+    "quorum_denials": 1,
+    "telemetry_nodes": 3,
+    "commands_checked": 37,
+    "commands_denied": 3,
+    "ledger": {
+      "ok": true,
+      "entries": 6,
+      "head": "dfe9f9843562dd225843c8edc21189dd1bec72962e38ff21a8b0159130dabb22"
+    }
+  },
+  "nodes": {
+    "node:north": {
+      "region": "zone-a",
+      "status": "online",
+      "enforcement": "active"
+    },
+    "node:south": {
+      "region": "zone-b",
+      "status": "online",
+      "enforcement": "active"
+    },
+    "node:east": {
+      "region": "zone-c",
+      "status": "online",
+      "enforcement": "active"
+    }
+  },
+  "rule_sync": {
+    "rules_synced": [
+      "R001",
+      "R002",
+      "R003",
+      "R004",
+      "R005"
+    ],
+    "status": "complete"
+  },
+  "violations": {
+    "violation:001": {
+      "origin": "node:south",
+      "violations": [
+        "R001",
+        "C003"
+      ],
+      "status": "propagated"
+    }
+  },
+  "override_quorum": {
+    "request": "override:cmd:kill-worker",
+    "required_votes": 2,
+    "decision": "deny",
+    "status": "closed"
+  },
+  "telemetry": [
+    {
+      "node": "node:north",
+      "commands_checked": 12,
+      "denied": 1
+    },
+    {
+      "node": "node:south",
+      "commands_checked": 15,
+      "denied": 2
+    },
+    {
+      "node": "node:east",
+      "commands_checked": 10,
+      "denied": 0
+    }
+  ],
+  "mesh_policy": {
+    "distributed_enforcement": true,
+    "override_requires_quorum": true,
+    "fail_closed": true
+  }
+}

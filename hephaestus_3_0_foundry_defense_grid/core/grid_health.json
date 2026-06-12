@@ -1,0 +1,18 @@
+{
+  "soc_nodes": 3,
+  "online_nodes": 3,
+  "federated_intel": 3,
+  "trust_votes": 3,
+  "consensus_records": 1,
+  "grid_incidents": 1,
+  "coordinated_responses": 1,
+  "contained_artifacts": 1,
+  "evidence_bundles": 1,
+  "defense_memory": 1,
+  "alert_bus": 3,
+  "ledger": {
+    "ok": true,
+    "entries": 8,
+    "head": "db13440460e2d758e9fe454173e7b429735a3af2011030627dd2f5a1e1b2d1b3"
+  }
+}

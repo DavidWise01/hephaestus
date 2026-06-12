@@ -1,0 +1,11 @@
+{
+  "artifact:operator-dashboard": {
+    "artifact": "artifact:operator-dashboard",
+    "nodes": [
+      "soc:north",
+      "soc:south",
+      "soc:east"
+    ],
+    "status": "contained"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": "3.7.0",
+  "status": "PASS",
+  "checks": {
+    "distributed_doctrine_enforcement": true,
+    "mesh_node_registry": true,
+    "rule_sync": true,
+    "violation_propagation": true,
+    "override_quorum": true,
+    "enforcement_telemetry": true,
+    "mesh_policy": true,
+    "enforcement_mesh_dashboard": true,
+    "selftest": true
+  }
+}

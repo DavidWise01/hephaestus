@@ -1,0 +1,7 @@
+{
+  "artifact:operator-dashboard": {
+    "artifact": "artifact:operator-dashboard",
+    "status": "contained",
+    "source_response": "responseq:001"
+  }
+}

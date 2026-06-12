@@ -1,0 +1,22 @@
+{
+  "objective:dashboard": {
+    "id": "objective:dashboard",
+    "name": "protect operator dashboard",
+    "value": 95,
+    "urgency": 90,
+    "constraints": [
+      "preserve service"
+    ],
+    "status": "active"
+  },
+  "objective:evidence": {
+    "id": "objective:evidence",
+    "name": "preserve evidence chain",
+    "value": 85,
+    "urgency": 80,
+    "constraints": [
+      "no tamper"
+    ],
+    "status": "active"
+  }
+}

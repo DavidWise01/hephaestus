@@ -1,0 +1,134 @@
+{
+  "version": "4.0.0",
+  "name": "Hephaestus Sovereign Governance Kernel",
+  "health": {
+    "kernel_active": true,
+    "root_authorities": 1,
+    "authority_records": 6,
+    "bound_subsystems": 8,
+    "legitimacy_rules": 6,
+    "sovereign_decisions": 3,
+    "ledger": {
+      "ok": true,
+      "entries": 5,
+      "head": "0b0e6b48f13408fa57f5177d9a8eaa1c3b1b06db803bee66c18ea439160a17dc"
+    }
+  },
+  "kernel": {
+    "version": "4.0.0",
+    "name": "Hephaestus Sovereign Governance Kernel",
+    "status": "active",
+    "root_authority": "sovereign:root",
+    "domains": [
+      "doctrine",
+      "enforcement",
+      "audit",
+      "recovery",
+      "command",
+      "strategy",
+      "defense_grid"
+    ]
+  },
+  "authority_registry": {
+    "sovereign:root": {
+      "role": "root_governor",
+      "permissions": [
+        "authorize",
+        "deny",
+        "recover",
+        "audit",
+        "halt"
+      ]
+    },
+    "authority:doctrine": {
+      "role": "doctrine_authority",
+      "bound_to": "v3.5"
+    },
+    "authority:enforcement": {
+      "role": "enforcement_authority",
+      "bound_to": "v3.6-v3.7"
+    },
+    "authority:audit": {
+      "role": "audit_authority",
+      "bound_to": "v3.8"
+    },
+    "authority:recovery": {
+      "role": "recovery_authority",
+      "bound_to": "v3.9"
+    },
+    "authority:command": {
+      "role": "command_authority",
+      "bound_to": "v3.3-v3.4"
+    }
+  },
+  "bindings": {
+    "doctrine_engine": "bound",
+    "runtime_enforcer": "bound",
+    "enforcement_mesh": "bound",
+    "governance_auditor": "bound",
+    "governance_recovery": "bound",
+    "autonomous_command_authority": "bound",
+    "strategic_autonomy": "bound",
+    "defense_grid_runtime": "bound"
+  },
+  "legitimacy_rules": {
+    "command_must_have_authority": true,
+    "destructive_command_requires_doctrine": true,
+    "override_requires_quorum": true,
+    "audit_required_for_governance_actions": true,
+    "recovery_may_repair_but_not_rewrite_receipts": true,
+    "root_halt_available": true
+  },
+  "sovereign_decisions": [
+    {
+      "id": "decision:001",
+      "action": "bind_governance_stack",
+      "decision": "allow",
+      "authority": "sovereign:root"
+    },
+    {
+      "id": "decision:002",
+      "action": "authorize_recovery_engine",
+      "decision": "allow",
+      "authority": "sovereign:root"
+    },
+    {
+      "id": "decision:003",
+      "action": "enforce_audit_before_override",
+      "decision": "allow",
+      "authority": "sovereign:root"
+    }
+  ],
+  "sovereign_ledger": [
+    {
+      "kind": "kernel_initialized",
+      "payload_hash": "b95559ea5028a131f110df9f2555f2fd9d8872b19fc8517218b5bae3e5ab76c6",
+      "prev_hash": "GENESIS",
+      "entry_hash": "ca0a52809a68312cd14d4a5010d1d2c5bf33c5b18672b036ba8b9fdee520caf6"
+    },
+    {
+      "kind": "authority_registry_loaded",
+      "payload_hash": "dc0b6bcd3dc02e451ed710bf90975f9be261a7e61a28a46879d40a8c3662df60",
+      "prev_hash": "ca0a52809a68312cd14d4a5010d1d2c5bf33c5b18672b036ba8b9fdee520caf6",
+      "entry_hash": "67d6a2f92d1dd5161adc03b4fc53b173c63e78aaa2f032bcecdd9c2e53df6676"
+    },
+    {
+      "kind": "subsystems_bound",
+      "payload_hash": "1d02925c1add988ab7c45d0548ecbe07689cf349a4f9a5086b8437eeab7dc2f3",
+      "prev_hash": "67d6a2f92d1dd5161adc03b4fc53b173c63e78aaa2f032bcecdd9c2e53df6676",
+      "entry_hash": "fc4961329c387084fff0fe748396eb81f98ea3550bafc11d347a0d74b6207cc0"
+    },
+    {
+      "kind": "legitimacy_rules_loaded",
+      "payload_hash": "53fcfb1d779ee7ac9da178e0faf76d6102298a0303e221658fb93608e3cf6d4c",
+      "prev_hash": "fc4961329c387084fff0fe748396eb81f98ea3550bafc11d347a0d74b6207cc0",
+      "entry_hash": "245648dfd2db060adfa1310f3f601d5d9b4f1e381a7c0e552193aa929685db9c"
+    },
+    {
+      "kind": "sovereign_decisions_recorded",
+      "payload_hash": "ad967452b0dd8a4b1c53f9f6e1d21a13118e3f0c3b6c0363054393243a5b355b",
+      "prev_hash": "245648dfd2db060adfa1310f3f601d5d9b4f1e381a7c0e552193aa929685db9c",
+      "entry_hash": "0b0e6b48f13408fa57f5177d9a8eaa1c3b1b06db803bee66c18ea439160a17dc"
+    }
+  ]
+}

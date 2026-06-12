@@ -1,0 +1,38 @@
+[
+  {
+    "kind": "nodes",
+    "payload_hash": "a53c93bc407949b42e1f8441759cf6f680183a7ee4e4805d5e3db22fec97b70d",
+    "prev_hash": "GENESIS",
+    "entry_hash": "2fd0d412371e5cfc143ef4a9124a7f7656bc6d72d9ce6d147b8a66eb4fbeed88"
+  },
+  {
+    "kind": "rule_sync",
+    "payload_hash": "063a1c462c2f812f04021f8f0b59ced8e4b00d9f08a9404f2651f63089ddce53",
+    "prev_hash": "2fd0d412371e5cfc143ef4a9124a7f7656bc6d72d9ce6d147b8a66eb4fbeed88",
+    "entry_hash": "8aaad74d623f16d49db4576d3a658c4afce210454914ccf2d0e64acca420ab67"
+  },
+  {
+    "kind": "violations",
+    "payload_hash": "400a45a3510f3bd0b4f7414166bc6d14f4170de1c07051c152cc9b5e8e9f00f0",
+    "prev_hash": "8aaad74d623f16d49db4576d3a658c4afce210454914ccf2d0e64acca420ab67",
+    "entry_hash": "ebff284a1143aa851d5001938eaec78b97b580acf1a0c56b3b450ec294a65e9e"
+  },
+  {
+    "kind": "quorum",
+    "payload_hash": "0205cbaa2c13561d9c44b6d87f5e16ed8cb1d462d3102e59209680c0c1fa0fae",
+    "prev_hash": "ebff284a1143aa851d5001938eaec78b97b580acf1a0c56b3b450ec294a65e9e",
+    "entry_hash": "02788b362d3912d7785c57c66edcca384f1eb428858452293ac51c32bc444183"
+  },
+  {
+    "kind": "telemetry",
+    "payload_hash": "b055121aa6612d8874fd23d0750969679a38d61b2db4fc68aa80ab7274ba21b5",
+    "prev_hash": "02788b362d3912d7785c57c66edcca384f1eb428858452293ac51c32bc444183",
+    "entry_hash": "81409fd183162a5b14652509212270d2dd8769568b0c6b5714e5a13396a323e6"
+  },
+  {
+    "kind": "mesh_policy",
+    "payload_hash": "db934a90f460204c96876221dd687362a707e82bb0c5ab7b71fb35ea6d180683",
+    "prev_hash": "81409fd183162a5b14652509212270d2dd8769568b0c6b5714e5a13396a323e6",
+    "entry_hash": "dfe9f9843562dd225843c8edc21189dd1bec72962e38ff21a8b0159130dabb22"
+  }
+]

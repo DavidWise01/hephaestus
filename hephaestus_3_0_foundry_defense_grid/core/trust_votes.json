@@ -1,0 +1,26 @@
+[
+  {
+    "id": "vote:001",
+    "node": "soc:north",
+    "artifact": "artifact:operator-dashboard",
+    "vote": "deny",
+    "confidence": 0.95,
+    "weight": 1.0
+  },
+  {
+    "id": "vote:002",
+    "node": "soc:south",
+    "artifact": "artifact:operator-dashboard",
+    "vote": "deny",
+    "confidence": 0.9,
+    "weight": 0.9
+  },
+  {
+    "id": "vote:003",
+    "node": "soc:east",
+    "artifact": "artifact:operator-dashboard",
+    "vote": "allow",
+    "confidence": 0.6,
+    "weight": 0.8
+  }
+]

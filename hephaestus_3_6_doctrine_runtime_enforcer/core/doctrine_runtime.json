@@ -1,0 +1,10 @@
+{
+  "active_doctrine": "defense-first-command-law",
+  "rules": {
+    "R001": "snapshot evidence before destructive response",
+    "R002": "critical threat permits quarantine",
+    "R003": "prefer rollback before kill when recovery path exists",
+    "R004": "manual override requires audit receipt",
+    "R005": "deescalate when threat score is below 50"
+  }
+}

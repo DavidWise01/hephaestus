@@ -1,0 +1,6 @@
+{
+  "command_router": "intercept",
+  "control_plane": "pre_execute_gate",
+  "response_engine": "destructive_action_guard",
+  "operator_console": "override_gate"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "soc:north",
+    "name": "north-soc",
+    "region": "zone-a",
+    "status": "online",
+    "trust_weight": 1.0
+  },
+  {
+    "id": "soc:south",
+    "name": "south-soc",
+    "region": "zone-b",
+    "status": "online",
+    "trust_weight": 0.9
+  },
+  {
+    "id": "soc:east",
+    "name": "east-soc",
+    "region": "zone-c",
+    "status": "online",
+    "trust_weight": 0.8
+  }
+]

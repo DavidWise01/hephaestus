@@ -1,0 +1,14 @@
+{
+  "version": "3.6.0",
+  "status": "PASS",
+  "checks": {
+    "live_rule_enforcement": true,
+    "command_interception": true,
+    "violation_receipts": true,
+    "doctrine_control_plane_binding": true,
+    "override_protocol": true,
+    "destructive_action_guard": true,
+    "runtime_enforcement_dashboard": true,
+    "selftest": true
+  }
+}

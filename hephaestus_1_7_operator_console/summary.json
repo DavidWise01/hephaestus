@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.7.0",
+  "status": "operator console",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

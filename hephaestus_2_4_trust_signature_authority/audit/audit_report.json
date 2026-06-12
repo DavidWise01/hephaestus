@@ -1,0 +1,17 @@
+{
+  "version": "2.4.0",
+  "status": "PASS",
+  "checks": {
+    "artifact_signing": true,
+    "signature_verification": true,
+    "publisher_identity_registry": true,
+    "trust_chain": true,
+    "revocation_list": true,
+    "install_gate": true,
+    "execution_gate": true,
+    "tamper_detection": true,
+    "provenance_receipts": true,
+    "trust_dashboard": true,
+    "selftest": true
+  }
+}

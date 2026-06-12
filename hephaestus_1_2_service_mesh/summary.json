@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.2.0",
+  "status": "service mesh",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

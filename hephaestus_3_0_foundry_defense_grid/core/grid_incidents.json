@@ -1,0 +1,14 @@
+{
+  "gridcase:001": {
+    "id": "gridcase:001",
+    "artifact": "artifact:operator-dashboard",
+    "intel": [
+      "intel:001",
+      "intel:002",
+      "intel:003"
+    ],
+    "severity": 100,
+    "severity_label": "CRITICAL",
+    "status": "CLOSED"
+  }
+}

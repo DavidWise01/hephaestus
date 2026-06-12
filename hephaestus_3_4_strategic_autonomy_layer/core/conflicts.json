@@ -1,0 +1,15 @@
+{
+  "conflict:001": {
+    "id": "conflict:001",
+    "campaigns": [
+      "campaign:containment",
+      "campaign:evidence"
+    ],
+    "reason": "resource_contention",
+    "status": "resolved",
+    "winner": "campaign:containment",
+    "defer": [
+      "campaign:evidence"
+    ]
+  }
+}

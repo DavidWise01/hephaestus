@@ -1,0 +1,14 @@
+{
+  "node:north": {
+    "score": 95,
+    "status": "pass"
+  },
+  "node:south": {
+    "score": 90,
+    "status": "pass"
+  },
+  "node:east": {
+    "score": 100,
+    "status": "pass"
+  }
+}

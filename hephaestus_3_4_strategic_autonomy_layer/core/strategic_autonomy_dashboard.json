@@ -1,0 +1,161 @@
+{
+  "version": "3.4.0",
+  "name": "Hephaestus Strategic Autonomy Layer",
+  "health": {
+    "objectives": 2,
+    "campaigns": 2,
+    "priorities": 2,
+    "conflicts": 1,
+    "risk_budgets": 2,
+    "escalations": 1,
+    "deescalations": 0,
+    "doctrine": 1,
+    "strategy_simulations": 2,
+    "decisions": 2,
+    "audit_entries": 2,
+    "ledger": {
+      "ok": true,
+      "entries": 8,
+      "head": "2943e2d03bc3fea4d97a4842fec18bd0ce8bc4a23779d24552efd8303b2cc5ff"
+    }
+  },
+  "objectives": {
+    "objective:dashboard": {
+      "id": "objective:dashboard",
+      "name": "protect operator dashboard",
+      "value": 95,
+      "urgency": 90,
+      "constraints": [
+        "preserve service"
+      ],
+      "status": "active"
+    },
+    "objective:evidence": {
+      "id": "objective:evidence",
+      "name": "preserve evidence chain",
+      "value": 85,
+      "urgency": 80,
+      "constraints": [
+        "no tamper"
+      ],
+      "status": "active"
+    }
+  },
+  "campaigns": {
+    "campaign:containment": {
+      "id": "campaign:containment",
+      "name": "dashboard containment",
+      "objective": "objective:dashboard",
+      "threat_pressure": 92,
+      "cost": 20,
+      "expected_benefit": 88,
+      "status": "candidate"
+    },
+    "campaign:evidence": {
+      "id": "campaign:evidence",
+      "name": "evidence hardening",
+      "objective": "objective:evidence",
+      "threat_pressure": 70,
+      "cost": 18,
+      "expected_benefit": 80,
+      "status": "candidate"
+    }
+  },
+  "priorities": {
+    "campaign:containment": {
+      "campaign": "campaign:containment",
+      "score": 90.3,
+      "status": "ranked"
+    },
+    "campaign:evidence": {
+      "campaign": "campaign:evidence",
+      "score": 77.7,
+      "status": "ranked"
+    }
+  },
+  "conflicts": {
+    "conflict:001": {
+      "id": "conflict:001",
+      "campaigns": [
+        "campaign:containment",
+        "campaign:evidence"
+      ],
+      "reason": "resource_contention",
+      "status": "resolved",
+      "winner": "campaign:containment",
+      "defer": [
+        "campaign:evidence"
+      ]
+    }
+  },
+  "risk_budgets": {
+    "campaign:containment": {
+      "campaign": "campaign:containment",
+      "max_risk": 90,
+      "current_risk": 100,
+      "remaining": 0,
+      "status": "over_budget"
+    },
+    "campaign:evidence": {
+      "campaign": "campaign:evidence",
+      "max_risk": 90,
+      "current_risk": 88,
+      "remaining": 2,
+      "status": "within_budget"
+    }
+  },
+  "doctrine": {
+    "doctrine:defense-first": {
+      "id": "doctrine:defense-first",
+      "name": "defense-first",
+      "rules": [
+        "preserve evidence",
+        "contain critical threats",
+        "avoid unnecessary disruption"
+      ],
+      "status": "active"
+    }
+  },
+  "strategy_simulations": {
+    "sim:containment": {
+      "id": "sim:containment",
+      "campaign": "campaign:containment",
+      "success_probability": 0.88,
+      "risk_budget_status": "over_budget",
+      "approved": false
+    },
+    "sim:evidence": {
+      "id": "sim:evidence",
+      "campaign": "campaign:evidence",
+      "success_probability": 0.74,
+      "risk_budget_status": "within_budget",
+      "approved": true
+    }
+  },
+  "decisions": [
+    {
+      "campaign": "campaign:containment",
+      "decision": "hold",
+      "action": "request_review",
+      "simulation": "sim:containment"
+    },
+    {
+      "campaign": "campaign:evidence",
+      "decision": "escalate",
+      "action": "authorize_campaign_execution",
+      "simulation": "sim:evidence"
+    }
+  ],
+  "audit": [
+    {
+      "action": "strategic_decision",
+      "campaign": "campaign:containment",
+      "decision": "hold"
+    },
+    {
+      "action": "strategic_decision",
+      "campaign": "campaign:evidence",
+      "decision": "escalate"
+    }
+  ]
+}

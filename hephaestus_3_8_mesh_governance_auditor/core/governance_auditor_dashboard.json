@@ -1,0 +1,166 @@
+{
+  "version": "3.8.0",
+  "name": "Hephaestus Mesh Governance Auditor",
+  "health": {
+    "audited_nodes": 3,
+    "doctrine_drift_events": 0,
+    "quorum_status": "valid",
+    "compliance_pass": 3,
+    "compliance_review": 0,
+    "findings": 2,
+    "evidence_bundles": 1,
+    "ledger": {
+      "ok": true,
+      "entries": 7,
+      "head": "e463bfe90ab96ab2035bdb6756ce0c71c1140340e4920b4ce674d0d3cb31ed14"
+    }
+  },
+  "scope": {
+    "required_doctrine": "3.7.0",
+    "quorum_minimum": 2,
+    "fail_closed_required": true
+  },
+  "nodes": {
+    "node:north": {
+      "doctrine_version": "3.7.0",
+      "enforcement": "active",
+      "quorum": true,
+      "violations": 1
+    },
+    "node:south": {
+      "doctrine_version": "3.7.0",
+      "enforcement": "active",
+      "quorum": true,
+      "violations": 2
+    },
+    "node:east": {
+      "doctrine_version": "3.7.0",
+      "enforcement": "active",
+      "quorum": true,
+      "violations": 0
+    }
+  },
+  "drift": {
+    "node:north": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    },
+    "node:south": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    },
+    "node:east": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    }
+  },
+  "quorum": {
+    "participants": [
+      "node:north",
+      "node:south",
+      "node:east"
+    ],
+    "participant_count": 3,
+    "required": 2,
+    "status": "valid"
+  },
+  "scores": {
+    "node:north": {
+      "score": 95,
+      "status": "pass"
+    },
+    "node:south": {
+      "score": 90,
+      "status": "pass"
+    },
+    "node:east": {
+      "score": 100,
+      "status": "pass"
+    }
+  },
+  "findings": [
+    {
+      "id": "finding:001",
+      "node": "node:south",
+      "type": "violation_volume",
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "id": "finding:002",
+      "node": "node:east",
+      "type": "clean_node",
+      "severity": "info",
+      "status": "noted"
+    }
+  ],
+  "evidence": {
+    "id": "evidence:001",
+    "scope": {
+      "required_doctrine": "3.7.0",
+      "quorum_minimum": 2,
+      "fail_closed_required": true
+    },
+    "drift": {
+      "node:north": {
+        "drift": false,
+        "expected": "3.7.0",
+        "actual": "3.7.0"
+      },
+      "node:south": {
+        "drift": false,
+        "expected": "3.7.0",
+        "actual": "3.7.0"
+      },
+      "node:east": {
+        "drift": false,
+        "expected": "3.7.0",
+        "actual": "3.7.0"
+      }
+    },
+    "quorum": {
+      "participants": [
+        "node:north",
+        "node:south",
+        "node:east"
+      ],
+      "participant_count": 3,
+      "required": 2,
+      "status": "valid"
+    },
+    "scores": {
+      "node:north": {
+        "score": 95,
+        "status": "pass"
+      },
+      "node:south": {
+        "score": 90,
+        "status": "pass"
+      },
+      "node:east": {
+        "score": 100,
+        "status": "pass"
+      }
+    },
+    "findings": [
+      {
+        "id": "finding:001",
+        "node": "node:south",
+        "type": "violation_volume",
+        "severity": "medium",
+        "status": "open"
+      },
+      {
+        "id": "finding:002",
+        "node": "node:east",
+        "type": "clean_node",
+        "severity": "info",
+        "status": "noted"
+      }
+    ],
+    "hash": "d7556c0c5d3d57a1f8c0cc31a075babc6565526b92a136f2dbbce325d324a3c4"
+  }
+}

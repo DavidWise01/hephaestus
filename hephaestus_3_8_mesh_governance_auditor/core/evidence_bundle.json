@@ -1,0 +1,66 @@
+{
+  "id": "evidence:001",
+  "scope": {
+    "required_doctrine": "3.7.0",
+    "quorum_minimum": 2,
+    "fail_closed_required": true
+  },
+  "drift": {
+    "node:north": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    },
+    "node:south": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    },
+    "node:east": {
+      "drift": false,
+      "expected": "3.7.0",
+      "actual": "3.7.0"
+    }
+  },
+  "quorum": {
+    "participants": [
+      "node:north",
+      "node:south",
+      "node:east"
+    ],
+    "participant_count": 3,
+    "required": 2,
+    "status": "valid"
+  },
+  "scores": {
+    "node:north": {
+      "score": 95,
+      "status": "pass"
+    },
+    "node:south": {
+      "score": 90,
+      "status": "pass"
+    },
+    "node:east": {
+      "score": 100,
+      "status": "pass"
+    }
+  },
+  "findings": [
+    {
+      "id": "finding:001",
+      "node": "node:south",
+      "type": "violation_volume",
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "id": "finding:002",
+      "node": "node:east",
+      "type": "clean_node",
+      "severity": "info",
+      "status": "noted"
+    }
+  ],
+  "hash": "d7556c0c5d3d57a1f8c0cc31a075babc6565526b92a136f2dbbce325d324a3c4"
+}

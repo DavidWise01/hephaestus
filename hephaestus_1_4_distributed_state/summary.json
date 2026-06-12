@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.4.0",
+  "status": "distributed state",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

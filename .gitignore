@@ -2,3 +2,8 @@
 Thumbs.db
 *.swp
 node_modules/
+
+__pycache__/
+*.pyc
+*.db
+_*.json

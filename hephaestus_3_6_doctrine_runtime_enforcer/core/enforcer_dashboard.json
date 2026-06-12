@@ -1,0 +1,119 @@
+{
+  "version": "3.6.0",
+  "name": "Hephaestus Doctrine Runtime Enforcer",
+  "health": {
+    "commands_intercepted": 4,
+    "allowed_commands": 3,
+    "denied_commands": 1,
+    "violation_receipts": 1,
+    "override_protocols": 1,
+    "runtime_bindings": 4,
+    "active_doctrines": 1,
+    "ledger": {
+      "ok": true,
+      "entries": 6,
+      "head": "4c0618f273cec6476e292c3a2770cff6a6d70562fa41009e288e5f4b02d7fb0b"
+    }
+  },
+  "doctrine": {
+    "active_doctrine": "defense-first-command-law",
+    "rules": {
+      "R001": "snapshot evidence before destructive response",
+      "R002": "critical threat permits quarantine",
+      "R003": "prefer rollback before kill when recovery path exists",
+      "R004": "manual override requires audit receipt",
+      "R005": "deescalate when threat score is below 50"
+    }
+  },
+  "commands": [
+    {
+      "id": "cmd:001",
+      "action": "quarantine",
+      "severity": 92,
+      "evidence_snapshot": true
+    },
+    {
+      "id": "cmd:002",
+      "action": "kill",
+      "severity": 70,
+      "evidence_snapshot": false
+    },
+    {
+      "id": "cmd:003",
+      "action": "rollback",
+      "severity": 80,
+      "trusted_baseline": true
+    },
+    {
+      "id": "cmd:004",
+      "action": "manual_override",
+      "severity": 88,
+      "audit_receipt": true
+    }
+  ],
+  "enforcement_results": [
+    {
+      "command": "cmd:001",
+      "decision": "allow",
+      "applied_rules": [
+        "R001",
+        "R002"
+      ],
+      "violations": []
+    },
+    {
+      "command": "cmd:002",
+      "decision": "deny",
+      "applied_rules": [],
+      "violations": [
+        "R001",
+        "C003"
+      ]
+    },
+    {
+      "command": "cmd:003",
+      "decision": "allow",
+      "applied_rules": [
+        "R003"
+      ],
+      "violations": []
+    },
+    {
+      "command": "cmd:004",
+      "decision": "allow",
+      "applied_rules": [
+        "R004"
+      ],
+      "violations": []
+    }
+  ],
+  "violations": {
+    "violation:001": {
+      "id": "violation:001",
+      "command": "cmd:002",
+      "violations": [
+        "R001",
+        "C003"
+      ],
+      "status": "recorded"
+    }
+  },
+  "override_protocol": {
+    "required_fields": [
+      "operator",
+      "reason",
+      "audit_receipt",
+      "expiry"
+    ],
+    "status": "active",
+    "rules": [
+      "R004"
+    ]
+  },
+  "bindings": {
+    "command_router": "intercept",
+    "control_plane": "pre_execute_gate",
+    "response_engine": "destructive_action_guard",
+    "operator_console": "override_gate"
+  }
+}

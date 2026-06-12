@@ -1,0 +1,11 @@
+{
+  "violation:001": {
+    "id": "violation:001",
+    "command": "cmd:002",
+    "violations": [
+      "R001",
+      "C003"
+    ],
+    "status": "recorded"
+  }
+}

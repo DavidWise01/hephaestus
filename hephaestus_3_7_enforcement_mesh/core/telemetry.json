@@ -1,0 +1,17 @@
+[
+  {
+    "node": "node:north",
+    "commands_checked": 12,
+    "denied": 1
+  },
+  {
+    "node": "node:south",
+    "commands_checked": 15,
+    "denied": 2
+  },
+  {
+    "node": "node:east",
+    "commands_checked": 10,
+    "denied": 0
+  }
+]

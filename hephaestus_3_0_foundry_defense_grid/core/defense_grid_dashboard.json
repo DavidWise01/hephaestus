@@ -1,0 +1,174 @@
+{
+  "version": "3.0.0",
+  "name": "Hephaestus Foundry Defense Grid",
+  "health": {
+    "soc_nodes": 3,
+    "online_nodes": 3,
+    "federated_intel": 3,
+    "trust_votes": 3,
+    "consensus_records": 1,
+    "grid_incidents": 1,
+    "coordinated_responses": 1,
+    "contained_artifacts": 1,
+    "evidence_bundles": 1,
+    "defense_memory": 1,
+    "alert_bus": 3,
+    "ledger": {
+      "ok": true,
+      "entries": 8,
+      "head": "db13440460e2d758e9fe454173e7b429735a3af2011030627dd2f5a1e1b2d1b3"
+    }
+  },
+  "soc_nodes": [
+    {
+      "id": "soc:north",
+      "name": "north-soc",
+      "region": "zone-a",
+      "status": "online",
+      "trust_weight": 1.0
+    },
+    {
+      "id": "soc:south",
+      "name": "south-soc",
+      "region": "zone-b",
+      "status": "online",
+      "trust_weight": 0.9
+    },
+    {
+      "id": "soc:east",
+      "name": "east-soc",
+      "region": "zone-c",
+      "status": "online",
+      "trust_weight": 0.8
+    }
+  ],
+  "federated_intel": [
+    {
+      "id": "intel:001",
+      "node": "soc:north",
+      "artifact": "artifact:operator-dashboard",
+      "threat_class": "permission_drift",
+      "severity": 80,
+      "indicators": [
+        "file:write"
+      ]
+    },
+    {
+      "id": "intel:002",
+      "node": "soc:south",
+      "artifact": "artifact:operator-dashboard",
+      "threat_class": "network_abuse",
+      "severity": 75,
+      "indicators": [
+        "egress_spike"
+      ]
+    },
+    {
+      "id": "intel:003",
+      "node": "soc:east",
+      "artifact": "artifact:operator-dashboard",
+      "threat_class": "execution_tampering",
+      "severity": 90,
+      "indicators": [
+        "hash_mismatch"
+      ]
+    }
+  ],
+  "trust_votes": [
+    {
+      "id": "vote:001",
+      "node": "soc:north",
+      "artifact": "artifact:operator-dashboard",
+      "vote": "deny",
+      "confidence": 0.95,
+      "weight": 1.0
+    },
+    {
+      "id": "vote:002",
+      "node": "soc:south",
+      "artifact": "artifact:operator-dashboard",
+      "vote": "deny",
+      "confidence": 0.9,
+      "weight": 0.9
+    },
+    {
+      "id": "vote:003",
+      "node": "soc:east",
+      "artifact": "artifact:operator-dashboard",
+      "vote": "allow",
+      "confidence": 0.6,
+      "weight": 0.8
+    }
+  ],
+  "consensus": {
+    "artifact:operator-dashboard": {
+      "id": "consensus:001",
+      "artifact": "artifact:operator-dashboard",
+      "allow_score": 0.48,
+      "deny_score": 1.76,
+      "decision": "deny",
+      "votes": [
+        "vote:001",
+        "vote:002",
+        "vote:003"
+      ]
+    }
+  },
+  "grid_incidents": {
+    "gridcase:001": {
+      "id": "gridcase:001",
+      "artifact": "artifact:operator-dashboard",
+      "intel": [
+        "intel:001",
+        "intel:002",
+        "intel:003"
+      ],
+      "severity": 100,
+      "severity_label": "CRITICAL",
+      "status": "CLOSED"
+    }
+  },
+  "coordinated_responses": {
+    "response:001": {
+      "id": "response:001",
+      "case": "gridcase:001",
+      "artifact": "artifact:operator-dashboard",
+      "action": "federated_quarantine",
+      "nodes": [
+        "soc:north",
+        "soc:south",
+        "soc:east"
+      ],
+      "status": "coordinated"
+    }
+  },
+  "containment_mesh": {
+    "artifact:operator-dashboard": {
+      "artifact": "artifact:operator-dashboard",
+      "nodes": [
+        "soc:north",
+        "soc:south",
+        "soc:east"
+      ],
+      "status": "contained"
+    }
+  },
+  "evidence_bundles": {
+    "gridevidence:001": {
+      "path": "/mnt/data/hephaestus_3_0_foundry_defense_grid/evidence_grid/gridevidence_001.json",
+      "hash": "e93c01f2ccc99c12bf852c0317a9c5ea89de1b7c853b26a5062794d4561903e9"
+    }
+  },
+  "defense_memory": {
+    "artifact:operator-dashboard": {
+      "artifact": "artifact:operator-dashboard",
+      "incidents": [
+        "gridcase:001"
+      ],
+      "outcomes": [
+        "federated_quarantine"
+      ],
+      "fingerprint": "1c2924d68f38efbfd5428b3e8b420bf7a0f78efa71f7902ef1fcf006f19e2cba"
+    }
+  }
+}

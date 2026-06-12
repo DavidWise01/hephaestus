@@ -1,0 +1,9 @@
+[
+  {
+    "id": "responseq:001",
+    "artifact": "artifact:operator-dashboard",
+    "action": "federated_quarantine",
+    "reason": "consensus_deny",
+    "status": "executed"
+  }
+]

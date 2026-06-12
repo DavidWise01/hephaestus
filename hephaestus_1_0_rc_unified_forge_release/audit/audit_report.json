@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0-rc",
+  "status": "PASS",
+  "checks": {
+    "unified_cli": true,
+    "module_bundle": true,
+    "plugin_registry": true,
+    "generated_app_template": true,
+    "release_manifest": true,
+    "dashboard": true,
+    "operator_docs": true,
+    "selftest": true
+  }
+}

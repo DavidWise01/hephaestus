@@ -1,0 +1,14 @@
+{
+  "commands_intercepted": 4,
+  "allowed_commands": 3,
+  "denied_commands": 1,
+  "violation_receipts": 1,
+  "override_protocols": 1,
+  "runtime_bindings": 4,
+  "active_doctrines": 1,
+  "ledger": {
+    "ok": true,
+    "entries": 6,
+    "head": "4c0618f273cec6476e292c3a2770cff6a6d70562fa41009e288e5f4b02d7fb0b"
+  }
+}

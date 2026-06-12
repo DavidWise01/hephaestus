@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "2.2.0",
+  "status": "artifact execution engine",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

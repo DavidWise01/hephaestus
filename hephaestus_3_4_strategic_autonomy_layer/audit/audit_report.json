@@ -1,0 +1,16 @@
+{
+  "version": "3.4.0",
+  "status": "PASS",
+  "checks": {
+    "campaign_prioritization": true,
+    "objective_conflict_resolution": true,
+    "mission_risk_budgeting": true,
+    "autonomous_escalation": true,
+    "autonomous_deescalation": true,
+    "command_doctrine": true,
+    "strategy_simulation": true,
+    "strategic_decision_log": true,
+    "strategic_autonomy_dashboard": true,
+    "selftest": true
+  }
+}

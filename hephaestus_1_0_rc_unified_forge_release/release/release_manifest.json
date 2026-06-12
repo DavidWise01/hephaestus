@@ -1,0 +1,16 @@
+{
+  "name": "Hephaestus",
+  "version": "1.0.0-rc",
+  "status": "release candidate",
+  "modules": {
+    "0.0": "Artifact Compiler",
+    "0.1": "Artifact Graph",
+    "0.4": "Assembly Line",
+    "0.5": "Forge Intelligence",
+    "0.6": "Code Generator",
+    "0.7": "Integration Harness",
+    "0.8": "Plugin Smith",
+    "0.9": "Autonomous Forge",
+    "1.0": "Unified Forge Release"
+  }
+}

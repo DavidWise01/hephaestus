@@ -1,0 +1,32 @@
+{
+  "sovereign:root": {
+    "role": "root_governor",
+    "permissions": [
+      "authorize",
+      "deny",
+      "recover",
+      "audit",
+      "halt"
+    ]
+  },
+  "authority:doctrine": {
+    "role": "doctrine_authority",
+    "bound_to": "v3.5"
+  },
+  "authority:enforcement": {
+    "role": "enforcement_authority",
+    "bound_to": "v3.6-v3.7"
+  },
+  "authority:audit": {
+    "role": "audit_authority",
+    "bound_to": "v3.8"
+  },
+  "authority:recovery": {
+    "role": "recovery_authority",
+    "bound_to": "v3.9"
+  },
+  "authority:command": {
+    "role": "command_authority",
+    "bound_to": "v3.3-v3.4"
+  }
+}

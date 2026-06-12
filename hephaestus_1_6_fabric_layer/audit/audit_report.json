@@ -1,0 +1,17 @@
+{
+  "version": "1.6.0",
+  "status": "PASS",
+  "checks": {
+    "fabric_control_plane": true,
+    "node_runtime_registry": true,
+    "service_mesh_registry": true,
+    "distributed_state_binding": true,
+    "self_healing_policy_binding": true,
+    "artifact_deployment_binding": true,
+    "fabric_event_bus": true,
+    "global_health_view": true,
+    "operator_dashboard": true,
+    "fabric_export_bundle": true,
+    "selftest": true
+  }
+}

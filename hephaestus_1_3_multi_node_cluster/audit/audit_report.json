@@ -1,0 +1,16 @@
+{
+  "version": "1.3.0",
+  "status": "PASS",
+  "checks": {
+    "node_registry": true,
+    "cluster_membership": true,
+    "node_heartbeats": true,
+    "leader_election": true,
+    "cluster_snapshot": true,
+    "cross_node_routing": true,
+    "replication_log": true,
+    "failure_detection": true,
+    "cluster_dashboard": true,
+    "selftest": true
+  }
+}

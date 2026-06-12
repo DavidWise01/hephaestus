@@ -1,0 +1,16 @@
+{
+  "campaign:containment": {
+    "campaign": "campaign:containment",
+    "max_risk": 90,
+    "current_risk": 100,
+    "remaining": 0,
+    "status": "over_budget"
+  },
+  "campaign:evidence": {
+    "campaign": "campaign:evidence",
+    "max_risk": 90,
+    "current_risk": 88,
+    "remaining": 2,
+    "status": "within_budget"
+  }
+}

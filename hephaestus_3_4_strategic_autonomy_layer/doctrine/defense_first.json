@@ -1,0 +1,10 @@
+{
+  "id": "doctrine:defense-first",
+  "name": "defense-first",
+  "rules": [
+    "preserve evidence",
+    "contain critical threats",
+    "avoid unnecessary disruption"
+  ],
+  "status": "active"
+}

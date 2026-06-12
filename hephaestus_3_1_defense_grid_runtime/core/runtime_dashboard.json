@@ -1,0 +1,186 @@
+{
+  "version": "3.1.0",
+  "name": "Hephaestus Defense Grid Runtime",
+  "health": {
+    "nodes": 3,
+    "online_nodes": 3,
+    "heartbeats": 6,
+    "alert_routes": 2,
+    "consensus_records": 1,
+    "response_queue": 1,
+    "executed_responses": 1,
+    "contained_artifacts": 1,
+    "memory_sync_events": 2,
+    "runtime_ticks": 2,
+    "ledger": {
+      "ok": true,
+      "entries": 8,
+      "head": "98f06ef618a9ffd725c52cf0dc7f8b90e91d3070e6bee9627c5308b8d2667986"
+    }
+  },
+  "nodes": [
+    {
+      "id": "node:north",
+      "name": "north-runtime",
+      "region": "zone-a",
+      "status": "online",
+      "health": "ok",
+      "tick": 2
+    },
+    {
+      "id": "node:south",
+      "name": "south-runtime",
+      "region": "zone-b",
+      "status": "online",
+      "health": "ok",
+      "tick": 2
+    },
+    {
+      "id": "node:east",
+      "name": "east-runtime",
+      "region": "zone-c",
+      "status": "online",
+      "health": "ok",
+      "tick": 2
+    }
+  ],
+  "heartbeats": [
+    {
+      "node": "node:north",
+      "tick": 1,
+      "status": "online",
+      "health": "ok"
+    },
+    {
+      "node": "node:south",
+      "tick": 1,
+      "status": "online",
+      "health": "ok"
+    },
+    {
+      "node": "node:east",
+      "tick": 1,
+      "status": "online",
+      "health": "ok"
+    },
+    {
+      "node": "node:north",
+      "tick": 2,
+      "status": "online",
+      "health": "ok"
+    },
+    {
+      "node": "node:south",
+      "tick": 2,
+      "status": "online",
+      "health": "ok"
+    },
+    {
+      "node": "node:east",
+      "tick": 2,
+      "status": "online",
+      "health": "ok"
+    }
+  ],
+  "alert_routes": [
+    {
+      "id": "route:001",
+      "source": "node:north",
+      "target": "node:south",
+      "alert_type": "threat",
+      "artifact": "artifact:operator-dashboard",
+      "severity": 85,
+      "status": "routed"
+    },
+    {
+      "id": "route:002",
+      "source": "node:south",
+      "target": "node:east",
+      "alert_type": "threat",
+      "artifact": "artifact:operator-dashboard",
+      "severity": 85,
+      "status": "routed"
+    }
+  ],
+  "consensus": {
+    "artifact:operator-dashboard": {
+      "artifact": "artifact:operator-dashboard",
+      "allow": 0.55,
+      "deny": 1.85,
+      "decision": "deny",
+      "votes": [
+        {
+          "node": "node:north",
+          "vote": "deny",
+          "confidence": 0.95
+        },
+        {
+          "node": "node:south",
+          "vote": "deny",
+          "confidence": 0.9
+        },
+        {
+          "node": "node:east",
+          "vote": "allow",
+          "confidence": 0.55
+        }
+      ]
+    }
+  },
+  "response_queue": [
+    {
+      "id": "responseq:001",
+      "artifact": "artifact:operator-dashboard",
+      "action": "federated_quarantine",
+      "reason": "consensus_deny",
+      "status": "executed"
+    }
+  ],
+  "executed_responses": [
+    {
+      "response": "responseq:001",
+      "artifact": "artifact:operator-dashboard",
+      "action": "federated_quarantine",
+      "status": "executed"
+    }
+  ],
+  "containment": {
+    "artifact:operator-dashboard": {
+      "artifact": "artifact:operator-dashboard",
+      "status": "contained",
+      "source_response": "responseq:001"
+    }
+  },
+  "defense_memory_sync": [
+    {
+      "source": "node:north",
+      "target": "node:south",
+      "artifact": "artifact:operator-dashboard",
+      "fingerprint": "fp-operator-dashboard",
+      "status": "synced"
+    },
+    {
+      "source": "node:north",
+      "target": "node:east",
+      "artifact": "artifact:operator-dashboard",
+      "fingerprint": "fp-operator-dashboard",
+      "status": "synced"
+    }
+  ],
+  "runtime_ticks": [
+    {
+      "id": "tick:001",
+      "nodes": 3,
+      "heartbeats": 3,
+      "executed": 1,
+      "status": "complete"
+    },
+    {
+      "id": "tick:002",
+      "nodes": 3,
+      "heartbeats": 6,
+      "executed": 0,
+      "status": "complete"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "required_doctrine": "3.7.0",
+  "quorum_minimum": 2,
+  "fail_closed_required": true
+}

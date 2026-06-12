@@ -1,0 +1,17 @@
+{
+  "version": "2.6.0",
+  "status": "PASS",
+  "checks": {
+    "runtime_behavior_monitor": true,
+    "execution_policy_watcher": true,
+    "artifact_activity_logs": true,
+    "anomaly_detector": true,
+    "permission_drift_detector": true,
+    "network_file_state_access_monitor": true,
+    "kill_switch": true,
+    "auto_quarantine_trigger": true,
+    "security_incident_receipts": true,
+    "security_dashboard": true,
+    "selftest": true
+  }
+}

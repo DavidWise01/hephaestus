@@ -1,0 +1,17 @@
+{
+  "version": "4.0.0",
+  "status": "PASS",
+  "checks": {
+    "root_authority_kernel": true,
+    "authority_registry": true,
+    "doctrine_binding": true,
+    "enforcement_binding": true,
+    "audit_binding": true,
+    "recovery_binding": true,
+    "command_binding": true,
+    "legitimacy_rules": true,
+    "sovereign_ledger": true,
+    "governance_dashboard": true,
+    "selftest": true
+  }
+}

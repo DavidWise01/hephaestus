@@ -1,0 +1,25 @@
+{
+  "artifact:operator-dashboard": {
+    "artifact": "artifact:operator-dashboard",
+    "allow": 0.55,
+    "deny": 1.85,
+    "decision": "deny",
+    "votes": [
+      {
+        "node": "node:north",
+        "vote": "deny",
+        "confidence": 0.95
+      },
+      {
+        "node": "node:south",
+        "vote": "deny",
+        "confidence": 0.9
+      },
+      {
+        "node": "node:east",
+        "vote": "allow",
+        "confidence": 0.55
+      }
+    ]
+  }
+}

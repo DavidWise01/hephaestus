@@ -1,0 +1,5 @@
+{
+  "distributed_enforcement": true,
+  "override_requires_quorum": true,
+  "fail_closed": true
+}

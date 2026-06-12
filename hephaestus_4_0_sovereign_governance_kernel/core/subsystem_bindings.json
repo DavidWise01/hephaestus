@@ -1,0 +1,10 @@
+{
+  "doctrine_engine": "bound",
+  "runtime_enforcer": "bound",
+  "enforcement_mesh": "bound",
+  "governance_auditor": "bound",
+  "governance_recovery": "bound",
+  "autonomous_command_authority": "bound",
+  "strategic_autonomy": "bound",
+  "defense_grid_runtime": "bound"
+}

@@ -1,0 +1,17 @@
+{
+  "nodes": 3,
+  "online_nodes": 3,
+  "heartbeats": 6,
+  "alert_routes": 2,
+  "consensus_records": 1,
+  "response_queue": 1,
+  "executed_responses": 1,
+  "contained_artifacts": 1,
+  "memory_sync_events": 2,
+  "runtime_ticks": 2,
+  "ledger": {
+    "ok": true,
+    "entries": 8,
+    "head": "98f06ef618a9ffd725c52cf0dc7f8b90e91d3070e6bee9627c5308b8d2667986"
+  }
+}

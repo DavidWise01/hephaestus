@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "doctrine_loaded",
+    "subject": "doctrine:defense-first",
+    "payload_hash": "953263345858d0af1f2124443cedb25cd5339e7badd545f2641e551264dbdaa2",
+    "prev_hash": "GENESIS",
+    "entry_hash": "7921a7cc5dde6ddbba0c8508c8238725b6b37c87d11af4f82eeedb01bcbff5da"
+  },
+  {
+    "kind": "objectives_added",
+    "subject": "objectives",
+    "payload_hash": "2c28ef363ade4497235f2f2c0499f5b37d2a7423f2a30a2f1d0b3078ed6a9040",
+    "prev_hash": "7921a7cc5dde6ddbba0c8508c8238725b6b37c87d11af4f82eeedb01bcbff5da",
+    "entry_hash": "1473adcf8cdb14feeb3b4039167bf2ce9e54d137f6fda25f4000c7c878e74c32"
+  },
+  {
+    "kind": "campaigns_added",
+    "subject": "campaigns",
+    "payload_hash": "7ba12cd26a19fa799b2e4258136c121f4e44d0bff709eea700b4b9330c9830e5",
+    "prev_hash": "1473adcf8cdb14feeb3b4039167bf2ce9e54d137f6fda25f4000c7c878e74c32",
+    "entry_hash": "2332ce1fb3e15185a62e824550839f450ad4f4214deded7ba252a63312ab0a67"
+  },
+  {
+    "kind": "campaigns_prioritized",
+    "subject": "priority_engine",
+    "payload_hash": "59a03e0e153f5fef8fe1fed43df74ea0d8c3636fa91e16e2ee5078bda013bd44",
+    "prev_hash": "2332ce1fb3e15185a62e824550839f450ad4f4214deded7ba252a63312ab0a67",
+    "entry_hash": "3317a465e15580a7bc3f935b263b7e107c2e60660a074e8ef2f2b66aba3e2fcc"
+  },
+  {
+    "kind": "conflicts_resolved",
+    "subject": "conflict_engine",
+    "payload_hash": "cb80b8514931b235d51a07e0ea65471b1f887a8ff8658ed7cd53ebf231c211d3",
+    "prev_hash": "3317a465e15580a7bc3f935b263b7e107c2e60660a074e8ef2f2b66aba3e2fcc",
+    "entry_hash": "93b4306ae11ea83590f8dc1f69426a731fe8c51451ecad81293fc5a5952c7270"
+  },
+  {
+    "kind": "risk_budgets_allocated",
+    "subject": "risk_engine",
+    "payload_hash": "ef434e45dbf8204e5c8550b40925769e144c1173ae280ec5773baacf26688799",
+    "prev_hash": "93b4306ae11ea83590f8dc1f69426a731fe8c51451ecad81293fc5a5952c7270",
+    "entry_hash": "a407947be0b9d4891dff7894d1ad12a3955436809e127ab4a522abd7d403e367"
+  },
+  {
+    "kind": "strategy_simulated",
+    "subject": "simulations",
+    "payload_hash": "981d8ac90ba8a5acc9a604cdbcaa450ba82bf9c6d6d58ddd636e91a3f79d7435",
+    "prev_hash": "a407947be0b9d4891dff7894d1ad12a3955436809e127ab4a522abd7d403e367",
+    "entry_hash": "9d72ed32b9f61a42ab9212facb14ca28228e2e9808d7730b740cb005f667ebc9"
+  },
+  {
+    "kind": "strategic_decisions",
+    "subject": "decisions",
+    "payload_hash": "9b9f15fdbf18061b631d7c2486b4a58788c83cd993fdde74aeedcb9217745ce0",
+    "prev_hash": "9d72ed32b9f61a42ab9212facb14ca28228e2e9808d7730b740cb005f667ebc9",
+    "entry_hash": "2943e2d03bc3fea4d97a4842fec18bd0ce8bc4a23779d24552efd8303b2cc5ff"
+  }
+]

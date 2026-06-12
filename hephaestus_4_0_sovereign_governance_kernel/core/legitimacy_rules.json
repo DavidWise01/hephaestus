@@ -1,0 +1,8 @@
+{
+  "command_must_have_authority": true,
+  "destructive_command_requires_doctrine": true,
+  "override_requires_quorum": true,
+  "audit_required_for_governance_actions": true,
+  "recovery_may_repair_but_not_rewrite_receipts": true,
+  "root_halt_available": true
+}

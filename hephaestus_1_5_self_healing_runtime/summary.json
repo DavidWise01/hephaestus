@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.5.0",
+  "status": "self-healing runtime",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "finding:001",
+    "node": "node:south",
+    "type": "violation_volume",
+    "severity": "medium",
+    "status": "open"
+  },
+  {
+    "id": "finding:002",
+    "node": "node:east",
+    "type": "clean_node",
+    "severity": "info",
+    "status": "noted"
+  }
+]

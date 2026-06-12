@@ -1,0 +1,16 @@
+{
+  "version": "2.1.0",
+  "components": [
+    "native_app_runner",
+    "process_supervisor",
+    "runtime_sandbox",
+    "port_allocator",
+    "service_lifecycle_manager",
+    "log_capture",
+    "crash_detection",
+    "restart_loop_protection",
+    "runtime_dashboard",
+    "live_selftest_runner"
+  ],
+  "status": "PASS"
+}

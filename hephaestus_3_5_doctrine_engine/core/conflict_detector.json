@@ -1,0 +1,12 @@
+[
+  {
+    "id": "conflict:001",
+    "rules": [
+      "R002",
+      "R003"
+    ],
+    "reason": "quarantine vs rollback priority",
+    "resolution": "R002 wins at severity >= 85; R003 follows containment",
+    "status": "resolved"
+  }
+]

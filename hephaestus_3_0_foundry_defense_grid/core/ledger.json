@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "soc_nodes_registered",
+    "subject": "grid",
+    "payload_hash": "b9fd131eba0a68145c2d615ecda9f0dee0cf4b4f5cd6704bf916032fa7da9230",
+    "prev_hash": "GENESIS",
+    "entry_hash": "0ff26ac456edf94d7955bde0ad0c07251fe8e1fb5b5e10ac722481e7f35d3b24"
+  },
+  {
+    "kind": "intel_published",
+    "subject": "artifact:operator-dashboard",
+    "payload_hash": "1193d27996bd2def026238e75af452299c06d61f146a4a481c44d4edf4297b92",
+    "prev_hash": "0ff26ac456edf94d7955bde0ad0c07251fe8e1fb5b5e10ac722481e7f35d3b24",
+    "entry_hash": "a122209cb85a560efd861c3637d6fd24e0f1116511a5312c3854a05b6102204a"
+  },
+  {
+    "kind": "trust_votes_recorded",
+    "subject": "artifact:operator-dashboard",
+    "payload_hash": "dc75902f9b29f8fa38e3c99d921f923e2bb2007de93404f5b33cf513ce28a095",
+    "prev_hash": "a122209cb85a560efd861c3637d6fd24e0f1116511a5312c3854a05b6102204a",
+    "entry_hash": "1169a2633f1cc0ba67b373bc9c32d029a16cd125078f7fc1d0c8a61943180474"
+  },
+  {
+    "kind": "trust_consensus",
+    "subject": "artifact:operator-dashboard",
+    "payload_hash": "eb1a26cb1f7524fa0e88a0cf6fbe51e6f8c84aab0856bedff35b6ebcc03865ee",
+    "prev_hash": "1169a2633f1cc0ba67b373bc9c32d029a16cd125078f7fc1d0c8a61943180474",
+    "entry_hash": "bef9dca8a598f1d5edd38ea051d78701cdc815175eace525364ed4c10671b57f"
+  },
+  {
+    "kind": "grid_incident_correlated",
+    "subject": "gridcase:001",
+    "payload_hash": "7259659168282a010d5cee94fd2e94e86dafdb5d7f105de07154d3ed4b57bb24",
+    "prev_hash": "bef9dca8a598f1d5edd38ea051d78701cdc815175eace525364ed4c10671b57f",
+    "entry_hash": "a1ce371d42779387b13a285f914bb3855afffeacb70ca9959c8a6b216d20fd1f"
+  },
+  {
+    "kind": "coordinated_response",
+    "subject": "response:001",
+    "payload_hash": "94983b277f66f79d8432404c0f7740999d84e445a43894e649667f6ba0f742cb",
+    "prev_hash": "a1ce371d42779387b13a285f914bb3855afffeacb70ca9959c8a6b216d20fd1f",
+    "entry_hash": "a4d28f6a00442137b3f4809f273bf3815fd88ab408de96237712074094d8be5e"
+  },
+  {
+    "kind": "grid_evidence_bundle",
+    "subject": "gridevidence:001",
+    "payload_hash": "9ab4af34660d79f373be7166f662e719c83f521266c95e0cbda94567fb0b615d",
+    "prev_hash": "a4d28f6a00442137b3f4809f273bf3815fd88ab408de96237712074094d8be5e",
+    "entry_hash": "7482ab1ba203ba68dc3a41541800dba81cc3e07a7592a9488df784103e81c81e"
+  },
+  {
+    "kind": "defense_memory_updated",
+    "subject": "artifact:operator-dashboard",
+    "payload_hash": "058096b55f2ecb38bd2d70be3f000228285cadc4ef74391a7dc2f4782b3a9d05",
+    "prev_hash": "7482ab1ba203ba68dc3a41541800dba81cc3e07a7592a9488df784103e81c81e",
+    "entry_hash": "db13440460e2d758e9fe454173e7b429735a3af2011030627dd2f5a1e1b2d1b3"
+  }
+]

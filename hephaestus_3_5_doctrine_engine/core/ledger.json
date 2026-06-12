@@ -1,0 +1,65 @@
+[
+  {
+    "kind": "doctrine_loaded",
+    "subject": "defense-first-command-law",
+    "payload_hash": "71e3ed375c31fdffbda224651c5e14e495d9347949ed6653f2aa83e5a7924ce1",
+    "prev_hash": "GENESIS",
+    "entry_hash": "075bbde834599b40dce73b2113ee554d5abc1aec553c2ed4bb4eb3177f94cebf"
+  },
+  {
+    "kind": "doctrine_compiled",
+    "subject": "compiled:71e3ed375c31fdff",
+    "payload_hash": "d2b8e1ec11ffcb7be776bc9ccac9868d10ebc605d6dc537c05986cdf807de2a0",
+    "prev_hash": "075bbde834599b40dce73b2113ee554d5abc1aec553c2ed4bb4eb3177f94cebf",
+    "entry_hash": "1a9fea8f512b90c04bfc6235cb6f3b767e672b2ed5e187530eb65617e95e0890"
+  },
+  {
+    "kind": "hierarchy_built",
+    "subject": "rule_hierarchy",
+    "payload_hash": "002984cda16d6ed6333ebabcfe8bd2c4faf6dfbdb6afa78d5d34c9f93b493882",
+    "prev_hash": "1a9fea8f512b90c04bfc6235cb6f3b767e672b2ed5e187530eb65617e95e0890",
+    "entry_hash": "150f6c1234919ef0ea694b7a535efdeafd43969ad4ec56aa07926a2a48cf6166"
+  },
+  {
+    "kind": "mission_registry_built",
+    "subject": "mission_law",
+    "payload_hash": "28af5ecc32d1887c4a7c06c9dd6f7c2849ef6850b6ce83c3b9aac89e3d7c2776",
+    "prev_hash": "150f6c1234919ef0ea694b7a535efdeafd43969ad4ec56aa07926a2a48cf6166",
+    "entry_hash": "e01a9e00509e2ad25269c2910707c98d737b37b8ff5e894b3ea8ef86688f0a13"
+  },
+  {
+    "kind": "constraints_resolved",
+    "subject": "artifact_defense",
+    "payload_hash": "d691ad6757ade1e0a8040b57084d13887a3f34f9784960a006e8f2aa2e56d58c",
+    "prev_hash": "e01a9e00509e2ad25269c2910707c98d737b37b8ff5e894b3ea8ef86688f0a13",
+    "entry_hash": "ce777a000123fa011e672dd4a211156a907c3da373644985b967f603b2fe515e"
+  },
+  {
+    "kind": "conflicts_resolved",
+    "subject": "conflicts",
+    "payload_hash": "20b471cc64b93e3e39da94f296498f27cffee79449c0e69e3f35745dea588f07",
+    "prev_hash": "ce777a000123fa011e672dd4a211156a907c3da373644985b967f603b2fe515e",
+    "entry_hash": "cfa839ed2a16512354b881c86874d8fdd70b93f491a83ea92755a7d2b5b743cd"
+  },
+  {
+    "kind": "simulation_run",
+    "subject": "sim:doctrine-artifact-defense",
+    "payload_hash": "ebfb59919db006338fcbab9acafb7a118c2f296a4781c4a6e4061fbac5c66230",
+    "prev_hash": "cfa839ed2a16512354b881c86874d8fdd70b93f491a83ea92755a7d2b5b743cd",
+    "entry_hash": "2e910c98ea409b9383cf2aa50588a7e07ff672ed343214733538d90649081cfa"
+  },
+  {
+    "kind": "version_recorded",
+    "subject": "1.0.0",
+    "payload_hash": "2de4a126c1d245a11027507bb3999d77949635b46ca25b92a3c92964dc57b8c2",
+    "prev_hash": "2e910c98ea409b9383cf2aa50588a7e07ff672ed343214733538d90649081cfa",
+    "entry_hash": "7b25de3ee80422354cbd83878a810101a005459fbe08fcd354c47b15a518980f"
+  },
+  {
+    "kind": "hooks_bound",
+    "subject": "enforcement",
+    "payload_hash": "c261a1a64433d2b63bffed172de16da09b16739e7ecc2a7c85dcb6ddbcd4e09c",
+    "prev_hash": "7b25de3ee80422354cbd83878a810101a005459fbe08fcd354c47b15a518980f",
+    "entry_hash": "23f1e134c6d2fb5f82d4a6ef59452501d664fca56926c2422ddcd49a05457fe2"
+  }
+]

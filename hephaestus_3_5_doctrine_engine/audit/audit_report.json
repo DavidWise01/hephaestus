@@ -1,0 +1,17 @@
+{
+  "version": "3.5.0",
+  "status": "PASS",
+  "checks": {
+    "doctrine_compiler": true,
+    "rule_hierarchy": true,
+    "mission_law_registry": true,
+    "constraint_resolver": true,
+    "doctrine_conflict_detector": true,
+    "doctrine_simulation": true,
+    "doctrine_versioning": true,
+    "doctrine_enforcement_hooks": true,
+    "operator_doctrine_editor": true,
+    "doctrine_dashboard": true,
+    "selftest": true
+  }
+}

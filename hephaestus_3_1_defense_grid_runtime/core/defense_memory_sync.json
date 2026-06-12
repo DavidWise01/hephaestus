@@ -1,0 +1,16 @@
+[
+  {
+    "source": "node:north",
+    "target": "node:south",
+    "artifact": "artifact:operator-dashboard",
+    "fingerprint": "fp-operator-dashboard",
+    "status": "synced"
+  },
+  {
+    "source": "node:north",
+    "target": "node:east",
+    "artifact": "artifact:operator-dashboard",
+    "fingerprint": "fp-operator-dashboard",
+    "status": "synced"
+  }
+]

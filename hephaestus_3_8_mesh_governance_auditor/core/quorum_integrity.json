@@ -1,0 +1,10 @@
+{
+  "participants": [
+    "node:north",
+    "node:south",
+    "node:east"
+  ],
+  "participant_count": 3,
+  "required": 2,
+  "status": "valid"
+}

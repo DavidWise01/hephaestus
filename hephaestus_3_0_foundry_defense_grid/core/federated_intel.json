@@ -1,0 +1,32 @@
+[
+  {
+    "id": "intel:001",
+    "node": "soc:north",
+    "artifact": "artifact:operator-dashboard",
+    "threat_class": "permission_drift",
+    "severity": 80,
+    "indicators": [
+      "file:write"
+    ]
+  },
+  {
+    "id": "intel:002",
+    "node": "soc:south",
+    "artifact": "artifact:operator-dashboard",
+    "threat_class": "network_abuse",
+    "severity": 75,
+    "indicators": [
+      "egress_spike"
+    ]
+  },
+  {
+    "id": "intel:003",
+    "node": "soc:east",
+    "artifact": "artifact:operator-dashboard",
+    "threat_class": "execution_tampering",
+    "severity": 90,
+    "indicators": [
+      "hash_mismatch"
+    ]
+  }
+]

@@ -1,0 +1,241 @@
+{
+  "version": "3.5.0",
+  "name": "Hephaestus Doctrine Engine",
+  "health": {
+    "doctrines": 1,
+    "compiled_doctrines": 1,
+    "rules": 5,
+    "constraints": 3,
+    "mission_laws": 3,
+    "conflicts": 1,
+    "resolved_conflicts": 1,
+    "simulations": 1,
+    "versions": 1,
+    "enforcement_hooks": 5,
+    "ledger": {
+      "ok": true,
+      "entries": 9,
+      "head": "23f1e134c6d2fb5f82d4a6ef59452501d664fca56926c2422ddcd49a05457fe2"
+    }
+  },
+  "source_doctrine": {
+    "name": "defense-first-command-law",
+    "version": "1.0.0",
+    "principles": [
+      "preserve evidence",
+      "contain critical threats",
+      "avoid unnecessary disruption",
+      "recover trusted service",
+      "audit every command"
+    ],
+    "rules": [
+      {
+        "id": "R001",
+        "level": 1,
+        "domain": "evidence",
+        "law": "snapshot evidence before destructive response",
+        "priority": 100
+      },
+      {
+        "id": "R002",
+        "level": 1,
+        "domain": "critical_threat",
+        "law": "critical threat permits quarantine",
+        "priority": 95
+      },
+      {
+        "id": "R003",
+        "level": 2,
+        "domain": "service_continuity",
+        "law": "prefer rollback before kill when recovery path exists",
+        "priority": 80
+      },
+      {
+        "id": "R004",
+        "level": 2,
+        "domain": "operator_control",
+        "law": "manual override requires audit receipt",
+        "priority": 90
+      },
+      {
+        "id": "R005",
+        "level": 3,
+        "domain": "deescalation",
+        "law": "deescalate when threat score is below 50",
+        "priority": 60
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C001",
+        "text": "no command may bypass audit"
+      },
+      {
+        "id": "C002",
+        "text": "no rollback without known trusted baseline"
+      },
+      {
+        "id": "C003",
+        "text": "no kill before containment simulation unless criticality exceeds 95"
+      }
+    ]
+  },
+  "compiled_doctrine": {
+    "compiled_id": "compiled:71e3ed375c31fdff",
+    "source_hash": "71e3ed375c31fdffbda224651c5e14e495d9347949ed6653f2aa83e5a7924ce1",
+    "status": "compiled",
+    "execution_order": [
+      "R001",
+      "R002",
+      "R004",
+      "R003",
+      "R005"
+    ]
+  },
+  "rule_hierarchy": {
+    "level_1_core_law": [
+      {
+        "id": "R001",
+        "level": 1,
+        "domain": "evidence",
+        "law": "snapshot evidence before destructive response",
+        "priority": 100
+      },
+      {
+        "id": "R002",
+        "level": 1,
+        "domain": "critical_threat",
+        "law": "critical threat permits quarantine",
+        "priority": 95
+      }
+    ],
+    "level_2_operational_law": [
+      {
+        "id": "R003",
+        "level": 2,
+        "domain": "service_continuity",
+        "law": "prefer rollback before kill when recovery path exists",
+        "priority": 80
+      },
+      {
+        "id": "R004",
+        "level": 2,
+        "domain": "operator_control",
+        "law": "manual override requires audit receipt",
+        "priority": 90
+      }
+    ],
+    "level_3_adaptive_law": [
+      {
+        "id": "R005",
+        "level": 3,
+        "domain": "deescalation",
+        "law": "deescalate when threat score is below 50",
+        "priority": 60
+      }
+    ]
+  },
+  "mission_law_registry": {
+    "artifact_defense": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "evidence_preservation": [
+      "R001",
+      "R004"
+    ],
+    "low_risk_monitoring": [
+      "R004",
+      "R005"
+    ]
+  },
+  "constraint_resolution": {
+    "mission": "artifact_defense",
+    "constraints_checked": [
+      "C001",
+      "C002",
+      "C003"
+    ],
+    "resolved": true,
+    "notes": [
+      "audit required",
+      "rollback requires baseline",
+      "kill requires simulation or critical override"
+    ]
+  },
+  "conflicts": [
+    {
+      "id": "conflict:001",
+      "rules": [
+        "R002",
+        "R003"
+      ],
+      "reason": "quarantine vs rollback priority",
+      "resolution": "R002 wins at severity >= 85; R003 follows containment",
+      "status": "resolved"
+    }
+  ],
+  "simulation": {
+    "id": "sim:doctrine-artifact-defense",
+    "scenario": "critical artifact tamper with recovery path",
+    "decision_path": [
+      "R001",
+      "R002",
+      "R003",
+      "R004"
+    ],
+    "recommended_action": "quarantine_then_rollback",
+    "approved": true,
+    "confidence": 0.94
+  },
+  "version_record": {
+    "version": "1.0.0",
+    "compiled_id": "compiled:71e3ed375c31fdff",
+    "source_hash": "71e3ed375c31fdffbda224651c5e14e495d9347949ed6653f2aa83e5a7924ce1",
+    "status": "active"
+  },
+  "enforcement_hooks": {
+    "command_router": [
+      "R004"
+    ],
+    "response_engine": [
+      "R001",
+      "R002",
+      "R003"
+    ],
+    "strategic_autonomy": [
+      "R002",
+      "R003",
+      "R005"
+    ],
+    "operator_console": [
+      "R004"
+    ],
+    "pipeline": [
+      "R001",
+      "R004"
+    ]
+  },
+  "editor_schema": {
+    "fields": [
+      "name",
+      "version",
+      "principles",
+      "rules",
+      "constraints"
+    ],
+    "rule_required_fields": [
+      "id",
+      "level",
+      "domain",
+      "law",
+      "priority"
+    ],
+    "constraint_required_fields": [
+      "id",
+      "text"
+    ]
+  }
+}

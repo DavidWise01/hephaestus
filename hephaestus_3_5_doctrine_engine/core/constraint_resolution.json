@@ -1,0 +1,14 @@
+{
+  "mission": "artifact_defense",
+  "constraints_checked": [
+    "C001",
+    "C002",
+    "C003"
+  ],
+  "resolved": true,
+  "notes": [
+    "audit required",
+    "rollback requires baseline",
+    "kill requires simulation or critical override"
+  ]
+}

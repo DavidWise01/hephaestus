@@ -1,0 +1,10 @@
+{
+  "violation:001": {
+    "origin": "node:south",
+    "violations": [
+      "R001",
+      "C003"
+    ],
+    "status": "propagated"
+  }
+}

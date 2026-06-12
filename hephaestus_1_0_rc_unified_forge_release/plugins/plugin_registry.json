@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0-rc",
+  "plugins": [
+    "database_builder",
+    "api_builder",
+    "dashboard_builder",
+    "workflow_builder",
+    "report_builder",
+    "security_builder"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "2.5.0",
+  "status": "policy-aware artifact pipeline",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

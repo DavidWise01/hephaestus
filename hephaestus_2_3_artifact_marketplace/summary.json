@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "2.3.0",
+  "status": "artifact marketplace",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

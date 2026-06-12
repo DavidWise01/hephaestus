@@ -1,0 +1,20 @@
+{
+  "node:north": {
+    "doctrine_version": "3.7.0",
+    "enforcement": "active",
+    "quorum": true,
+    "violations": 1
+  },
+  "node:south": {
+    "doctrine_version": "3.7.0",
+    "enforcement": "active",
+    "quorum": true,
+    "violations": 2
+  },
+  "node:east": {
+    "doctrine_version": "3.7.0",
+    "enforcement": "active",
+    "quorum": true,
+    "violations": 0
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "node": "node:north",
+    "tick": 1,
+    "status": "online",
+    "health": "ok"
+  },
+  {
+    "node": "node:south",
+    "tick": 1,
+    "status": "online",
+    "health": "ok"
+  },
+  {
+    "node": "node:east",
+    "tick": 1,
+    "status": "online",
+    "health": "ok"
+  },
+  {
+    "node": "node:north",
+    "tick": 2,
+    "status": "online",
+    "health": "ok"
+  },
+  {
+    "node": "node:south",
+    "tick": 2,
+    "status": "online",
+    "health": "ok"
+  },
+  {
+    "node": "node:east",
+    "tick": 2,
+    "status": "online",
+    "health": "ok"
+  }
+]

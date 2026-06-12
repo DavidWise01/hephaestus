@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "3.4.0",
+  "status": "strategic autonomy layer",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

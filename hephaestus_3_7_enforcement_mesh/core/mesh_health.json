@@ -1,0 +1,18 @@
+{
+  "mesh_nodes": 3,
+  "online_nodes": 3,
+  "rule_syncs": 1,
+  "rules_synced": 5,
+  "violations": 1,
+  "propagated_violations": 1,
+  "override_quorums": 1,
+  "quorum_denials": 1,
+  "telemetry_nodes": 3,
+  "commands_checked": 37,
+  "commands_denied": 3,
+  "ledger": {
+    "ok": true,
+    "entries": 6,
+    "head": "dfe9f9843562dd225843c8edc21189dd1bec72962e38ff21a8b0159130dabb22"
+  }
+}

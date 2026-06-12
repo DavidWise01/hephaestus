@@ -1,0 +1,18 @@
+{
+  "objectives": 2,
+  "campaigns": 2,
+  "priorities": 2,
+  "conflicts": 1,
+  "risk_budgets": 2,
+  "escalations": 1,
+  "deescalations": 0,
+  "doctrine": 1,
+  "strategy_simulations": 2,
+  "decisions": 2,
+  "audit_entries": 2,
+  "ledger": {
+    "ok": true,
+    "entries": 8,
+    "head": "2943e2d03bc3fea4d97a4842fec18bd0ce8bc4a23779d24552efd8303b2cc5ff"
+  }
+}

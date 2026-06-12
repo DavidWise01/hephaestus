@@ -1,0 +1,14 @@
+{
+  "response:001": {
+    "id": "response:001",
+    "case": "gridcase:001",
+    "artifact": "artifact:operator-dashboard",
+    "action": "federated_quarantine",
+    "nodes": [
+      "soc:north",
+      "soc:south",
+      "soc:east"
+    ],
+    "status": "coordinated"
+  }
+}

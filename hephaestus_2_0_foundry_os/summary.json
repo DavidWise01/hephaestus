@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "2.0.0",
+  "status": "Foundry OS gold master",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

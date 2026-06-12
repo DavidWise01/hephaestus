@@ -1,0 +1,7 @@
+{
+  "name": "Hephaestus",
+  "version": "1.6.0",
+  "status": "fabric layer",
+  "selftest": "PASS",
+  "audit": "PASS"
+}

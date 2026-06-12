@@ -1,0 +1,14 @@
+[
+  {
+    "campaign": "campaign:containment",
+    "decision": "hold",
+    "action": "request_review",
+    "simulation": "sim:containment"
+  },
+  {
+    "campaign": "campaign:evidence",
+    "decision": "escalate",
+    "action": "authorize_campaign_execution",
+    "simulation": "sim:evidence"
+  }
+]

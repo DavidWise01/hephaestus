@@ -1,0 +1,18 @@
+{
+  "version": "2.5.0",
+  "status": "PASS",
+  "checks": {
+    "artifact_intake_pipeline": true,
+    "policy_gate_chain": true,
+    "trust_verification_binding": true,
+    "marketplace_install_binding": true,
+    "execution_approval_binding": true,
+    "risk_scoring_per_artifact": true,
+    "quarantine_lane": true,
+    "promotion_lane": true,
+    "rollback_lane": true,
+    "pipeline_receipts": true,
+    "pipeline_dashboard": true,
+    "selftest": true
+  }
+}

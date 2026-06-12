@@ -1,0 +1,12 @@
+[
+  {
+    "action": "strategic_decision",
+    "campaign": "campaign:containment",
+    "decision": "hold"
+  },
+  {
+    "action": "strategic_decision",
+    "campaign": "campaign:evidence",
+    "decision": "escalate"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "id": "sim:containment",
+  "campaign": "campaign:containment",
+  "success_probability": 0.88,
+  "risk_budget_status": "over_budget",
+  "approved": false
+}

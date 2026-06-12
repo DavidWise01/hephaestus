@@ -1,0 +1,17 @@
+{
+  "doctrines": 1,
+  "compiled_doctrines": 1,
+  "rules": 5,
+  "constraints": 3,
+  "mission_laws": 3,
+  "conflicts": 1,
+  "resolved_conflicts": 1,
+  "simulations": 1,
+  "versions": 1,
+  "enforcement_hooks": 5,
+  "ledger": {
+    "ok": true,
+    "entries": 9,
+    "head": "23f1e134c6d2fb5f82d4a6ef59452501d664fca56926c2422ddcd49a05457fe2"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "3.9.0",
+  "name": "Hephaestus Governance Recovery Engine",
+  "features": [
+    "governance repair planner",
+    "doctrine resync engine",
+    "quorum recovery",
+    "compliance remediation",
+    "finding closure workflow",
+    "audit-to-repair binding",
+    "policy rollback",
+    "corrective action receipts",
+    "recovery dashboard"
+  ],
+  "status": "operational"
+}

@@ -1,0 +1,12 @@
+{
+  "campaign:containment": {
+    "campaign": "campaign:containment",
+    "score": 90.3,
+    "status": "ranked"
+  },
+  "campaign:evidence": {
+    "campaign": "campaign:evidence",
+    "score": 77.7,
+    "status": "ranked"
+  }
+}

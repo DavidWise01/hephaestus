@@ -1,0 +1,9 @@
+{
+  "repair_plans": 1,
+  "doctrine_resyncs": 1,
+  "quorum_recoveries": 1,
+  "remediations": 1,
+  "policy_rollbacks": 1,
+  "receipts": 4,
+  "status": "healthy"
+}

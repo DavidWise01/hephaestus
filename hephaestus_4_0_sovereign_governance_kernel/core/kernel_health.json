@@ -1,0 +1,13 @@
+{
+  "kernel_active": true,
+  "root_authorities": 1,
+  "authority_records": 6,
+  "bound_subsystems": 8,
+  "legitimacy_rules": 6,
+  "sovereign_decisions": 3,
+  "ledger": {
+    "ok": true,
+    "entries": 5,
+    "head": "0b0e6b48f13408fa57f5177d9a8eaa1c3b1b06db803bee66c18ea439160a17dc"
+  }
+}

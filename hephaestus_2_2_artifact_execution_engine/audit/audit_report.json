@@ -1,0 +1,17 @@
+{
+  "version": "2.2.0",
+  "status": "PASS",
+  "checks": {
+    "artifact_launcher": true,
+    "execution_graph": true,
+    "dependency_resolver": true,
+    "workflow_runner": true,
+    "job_queue": true,
+    "artifact_sandbox": true,
+    "execution_telemetry": true,
+    "artifact_health_monitor": true,
+    "execution_audit_trail": true,
+    "artifact_marketplace_registry": true,
+    "selftest": true
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "doctrine_loaded",
+    "subject": "defense-first-command-law",
+    "payload_hash": "630f4f81f30f1cb0b3d10d752c9fc4f55c624c10a95d1bae679fe0b08f7f8f6c",
+    "prev_hash": "GENESIS",
+    "entry_hash": "851b354e7ad5d7049fa89322eaae955407d7ac7d52909d20d55e0f894cff3d1d"
+  },
+  {
+    "kind": "commands_intercepted",
+    "subject": "runtime",
+    "payload_hash": "46a6748b7a93ada11eca52a6c63e98cabfd451596c518258bf209689730757d8",
+    "prev_hash": "851b354e7ad5d7049fa89322eaae955407d7ac7d52909d20d55e0f894cff3d1d",
+    "entry_hash": "9723499bc8fb754fab5e966d27369155b6ad1a6b4cb89e9c3a8fd757692718dd"
+  },
+  {
+    "kind": "enforcement_evaluated",
+    "subject": "runtime",
+    "payload_hash": "d690191203e06e2a43f140ae16a05867c5de0b0e7f777e3b7906f319e92c6bdc",
+    "prev_hash": "9723499bc8fb754fab5e966d27369155b6ad1a6b4cb89e9c3a8fd757692718dd",
+    "entry_hash": "a494b65b72ad5b8596ac58f439b9ff10d465649907d2d5edd3babe2ab2e382d3"
+  },
+  {
+    "kind": "violations_recorded",
+    "subject": "violations",
+    "payload_hash": "b02c0754805da14bdfad43f015229f8c35417e8ab32d7301dabc58dec261f57a",
+    "prev_hash": "a494b65b72ad5b8596ac58f439b9ff10d465649907d2d5edd3babe2ab2e382d3",
+    "entry_hash": "2ceea632a1ab0be2da8fd8cbe8acd2af91bf530d616942f32730667de19bdfe2"
+  },
+  {
+    "kind": "override_protocol_loaded",
+    "subject": "overrides",
+    "payload_hash": "b1724bafc258102876453833f761b293229580b5c8b4c3ce46af7547d7bcfde7",
+    "prev_hash": "2ceea632a1ab0be2da8fd8cbe8acd2af91bf530d616942f32730667de19bdfe2",
+    "entry_hash": "1e3bd6ef0d0051aa44349cfa233b29f7b522a44c4f819babf18ff0c1943571b6"
+  },
+  {
+    "kind": "runtime_bindings_active",
+    "subject": "bindings",
+    "payload_hash": "63e5172e9975d873e761f16a2f87c7ef8d9ef2ccd7f1b1b8c29b0d6083e33a8b",
+    "prev_hash": "1e3bd6ef0d0051aa44349cfa233b29f7b522a44c4f819babf18ff0c1943571b6",
+    "entry_hash": "4c0618f273cec6476e292c3a2770cff6a6d70562fa41009e288e5f4b02d7fb0b"
+  }
+]
