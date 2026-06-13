@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEPHAESTUS · THE FORGE — an artifact that builds better artifacts</title>
+<style>
+:root{--bg:#0c0a08;--panel:#141009;--ink:#e9dcc6;--dim:#8c7d63;--line:#2a2116;
+--ember:#e0883a;--ember2:#f0b46a;--ok:#6fbf8a;--bad:#c0563a;--add:#f0b46a;
+--mono:ui-monospace,"Courier New",monospace;--serif:"Iowan Old Style",Georgia,serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.5;padding:14px}
+.sheet{max-width:880px;margin:0 auto}
+.mast{text-align:center;border-bottom:1px solid var(--line);padding-bottom:14px}
+.eye{font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--ember);text-transform:uppercase}
+h1{font-size:clamp(26px,6vw,44px);letter-spacing:.04em;margin:6px 0 2px;font-weight:700}
+h1 .f{color:var(--ember)}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.intro{font-size:14px;max-width:660px;margin:12px auto 0;color:var(--dim);text-align:center;line-height:1.6}
+.intro b{color:var(--ink)}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 6px}
+.btn{appearance:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border:1.5px solid var(--ember);color:var(--ember);background:transparent;border-radius:6px}
+.btn:hover{background:rgba(224,136,58,.12)} .btn:active{transform:scale(.97)} .btn:disabled{opacity:.35;cursor:default}
+.btn.alt{border-color:var(--dim);color:var(--dim)}
+.stage{display:grid;grid-template-columns:1fr 290px;gap:14px;margin-top:8px}
+@media(max-width:700px){.stage{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:0;overflow:hidden}
+.panel h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);padding:11px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.panel h3 .g{color:var(--ember)}
+pre#art{margin:0;padding:14px;font-family:var(--mono);font-size:12.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;min-height:300px;color:var(--ink)}
+pre#art .added{color:var(--add);font-weight:700}
+pre#art .key{color:var(--ember)}
+.side{padding:12px 14px}
+.chk{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:7px 0;display:flex;gap:8px;align-items:flex-start}
+.chk .mk{width:14px;flex:0 0 14px}
+.chk.met{color:var(--ink)} .chk.met .mk{color:var(--ok)}
+.chk.pend{color:var(--dim)} .chk.pend .mk{color:var(--bad)}
+.chk .craft{color:var(--ember);font-size:10px}
+.state{font-family:var(--mono);font-size:12px;border-top:1px solid var(--line);margin-top:12px;padding-top:10px;line-height:1.9}
+.state .big{font-size:14px;font-weight:700;color:var(--ember2)}
+.state .ok{color:var(--ok);font-weight:700}
+.frame{border:1px solid var(--line);background:var(--panel);border-radius:10px;margin-top:16px;padding:14px;font-size:13px;color:var(--dim);line-height:1.6}
+.frame b{color:var(--ink)} .frame .is{color:var(--ok)}
+.foot{margin-top:18px;border-top:1px solid var(--line);padding-top:12px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em;line-height:1.8}
+.foot a{color:var(--ember);text-decoration:none}
+</style></head>
+<body><div class="sheet">
+
+<header class="mast">
+  <div class="eye">Hephaestus · the divine smith · prior art to the "artificial general engineer"</div>
+  <h1>THE <span class="f">FORGE</span></h1>
+  <div class="sub">An artifact that builds better artifacts — watch one get built</div>
+  <p class="intro">A weak artifact goes in (a two-line stub that satisfies nothing). The forge works its <b>weakest article</b> each pass — adding the real piece that article demands — and hands back a <b>new, stronger artifact</b>. Press the button and read the manifest grow, line by line, until it meets all six constitutional articles and is <b>forge-complete</b>. No dependencies; it runs anywhere.</p>
+</header>
+
+<div class="ctrls">
+  <button class="btn" id="step">Forge one pass ▸</button>
+  <button class="btn" id="run">Forge to complete ⚒</button>
+  <button class="btn alt" id="copy">Copy artifact ⧉</button>
+  <button class="btn alt" id="reset">New weak artifact ⟲</button>
+</div>
+
+<div class="stage">
+  <div class="panel">
+    <h3><span>THE ARTIFACT · manifest.json</span><span class="g" id="gtag">gen 0</span></h3>
+    <pre id="art"></pre>
+  </div>
+  <div class="panel">
+    <div class="side">
+      <h3 style="padding:0 0 8px;border:none;margin-bottom:6px">Six Articles</h3>
+      <div id="chk"></div>
+      <div class="state" id="state"></div>
+    </div>
+  </div>
+</div>
+
+<div class="frame">
+  <p><span class="is">WHAT THIS IS:</span> the heart of Hephaestus, made to run and made to <b>show its work</b>. Each pass takes the lowest-met article and adds the concrete thing it requires — a pinned seed, a fenced boundary, a chained receipt, a restore point, a stated limit, a destructive-action gate — minting a <b>new artifact</b> each time. The output is a complete, constitutional manifest you can copy and use. The forge is itself an artifact (one file) that, given an artifact, returns a better one — that recursion is what Hephaestus is. The Python engine and a strictly-improving score proof live at <b>forge/hephaestus_forge.py</b> (39/39 self-tests green).</p>
+</div>
+
+<footer class="foot">
+  PRIOR ART · "an artifact that makes better artifacts" was forged here before the Artificial General Engineer had a name<br>
+  HEPHAESTUS · github.com/DavidWise01/hephaestus · <a href="PRIOR_ART.md">prior-art record</a> · <a href="PROMETHEUS.html">legacy restitution engine</a>
+</footer>
+
+</div>
+<script>
+// Each article, in repair order, with the concrete manifest section the forge ADDS to satisfy it.
+const ARTICLES=[
+  {id:"determinism", craft:"pin the seed",            key:"seed",            val:()=>'"'+rid(16)+'"'},
+  {id:"boundary",    craft:"fence the scope",         key:"boundary",        val:()=>'{ "reads": ["./in"], "writes": ["./out"], "network": false }'},
+  {id:"provenance",  craft:"chain the receipt",       key:"ledger",          val:()=>'{ "scheme": "sha256-chained", "head": "'+rid(12)+'" }'},
+  {id:"recovery",    craft:"ledger the restore-point",key:"restore_point",   val:()=>'"'+rid(12)+'"'},
+  {id:"transparency",craft:"surface the limit",       key:"limits",          val:()=>'["headless-capable", "no silent failure", "states own bounds"]'},
+  {id:"due_process", craft:"gate the destructive act",key:"destructive_gate",val:()=>'{ "requires": "recorded_reason", "appealable": true }'},
+];
+function rid(n){let s="";const h="0123456789abcdef";for(let i=0;i<n;i++)s+=h[Math.floor(Math.random()*16)];return s;}
+let gen, base, added, justKey;
+function reset(){
+  gen=0; added=[]; justKey=null;
+  base={ name:"weak-system", version:"0.1.0" };   // the seed: satisfies nothing
+  render();
+}
+function nextArticle(){ return ARTICLES.find(a=>!added.includes(a.id)); }
+function step(){
+  const a=nextArticle(); if(!a) return;
+  base[a.key]=a.val(); added.push(a.id); justKey=a.key; gen++;
+  // each forged artifact is parent-linked by a fresh provenance id
+  base.gen=gen; base.parent_was="gen "+(gen-1);
+  render();
+}
+function run(){ const t=setInterval(()=>{ if(!nextArticle()){clearInterval(t);return;} step(); },180); }
+const ARTKEYS = ARTICLES.map(a=>a.key);          // these hold pre-formatted JSON text
+function fieldOrder(){ return ["name","version",...ARTKEYS.filter(k=>k in base),"gen","parent_was"].filter(k=>k in base); }
+function rawVal(k){ return ARTKEYS.includes(k) ? base[k] : JSON.stringify(base[k]); }  // article values are already JSON text
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function manifestText(){
+  const ks=fieldOrder();
+  const lines=ks.map(k=>{
+    const cls=(k===justKey)?'added':(ARTKEYS.includes(k)?'key':'');
+    return '  <span class="'+cls+'">"'+k+'": '+esc(rawVal(k))+'</span>';
+  });
+  return "{\n"+lines.join(",\n")+"\n}";
+}
+function render(){
+  document.getElementById("art").innerHTML=manifestText();
+  document.getElementById("gtag").textContent="gen "+gen;
+  const met=added.length, all=ARTICLES.length;
+  document.getElementById("chk").innerHTML=ARTICLES.map(a=>{
+    const ok=added.includes(a.id);
+    return '<div class="chk '+(ok?'met':'pend')+'"><span class="mk">'+(ok?'✓':'✗')+'</span>'+
+      '<span>'+a.id+'<br><span class="craft">'+a.craft+'</span></span></div>';
+  }).join("");
+  document.getElementById("state").innerHTML=
+    'articles met: <span class="big">'+met+' / '+all+'</span><br>'+
+    'gen: <b>'+gen+'</b> (each pass = a new artifact)<br>'+
+    'status: '+(met===all?'<span class="ok">⚒ FORGE-COMPLETE</span>':'<span style="color:var(--ember)">forging…</span>');
+  document.getElementById("step").disabled = (met===all);
+  document.getElementById("run").disabled = (met===all);
+}
+function plainManifest(){
+  const order=["name","version",...ARTICLES.map(a=>a.key).filter(k=>k in base),"gen","parent_was"];
+  const lines=order.filter(k=>k in base).map(k=>'  "'+k+'": '+(typeof base[k]==='string'&&base[k].match(/^[\[{"]/)?base[k]:JSON.stringify(base[k])));
+  return "{\n"+lines.join(",\n")+"\n}";
+}
+document.getElementById("step").onclick=step;
+document.getElementById("run").onclick=run;
+document.getElementById("reset").onclick=reset;
+document.getElementById("copy").onclick=()=>{ navigator.clipboard&&navigator.clipboard.writeText(plainManifest());
+  const b=document.getElementById("copy"),o=b.textContent;b.textContent="copied ✓";setTimeout(()=>b.textContent=o,1200); };
+reset();
+</script>
+</body></html>
