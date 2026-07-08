@@ -4,6 +4,6 @@ slug  : hephaestus
 seal  : 20739e367ca732dfa9a067941cc45c47d10692ddce8c8f970a02b94523a31265
 prev  : f614557ab3042a8b7a35d358df6fa2b9e5ee41ae3655bfabfe2b485fd11432c2
 link  : eef7e853fdb706a131b06753706e31fa90ea68f2c7c572269aaebac7aababdaf
-head  : 3447d3a0533aaf1e29a8bdc67a9774884fb3ae9dbc8a17064b7a008ca3c4ec90
+head  : 13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
